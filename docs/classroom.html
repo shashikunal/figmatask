@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classroom — Open Figma & Compare with Code | Teknic Euchner</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;background:#0B0F14;color:#E6E8EB}
+a{color:#60A5FA}
+.topbar{position:sticky;top:0;z-index:20;background:#0B0F14;border-bottom:1px solid #1F2937;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.topbar h1{font-size:16px;letter-spacing:-0.3px}
+.topbar h1 span{color:#E60000}
+.btn{padding:8px 12px;border-radius:8px;border:1px solid #2A3342;background:#1F2937;color:#fff;font-size:12px;cursor:pointer}
+.btn.primary{background:#E60000;border-color:#E60000}
+.btn.active{background:#E60000}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;height:calc(100vh - 56px)}
+.pane{background:#111827;border-right:1px solid #1F2937;display:flex;flex-direction:column}
+.pane:last-child{border-right:0}
+.pane-head{padding:10px 14px;background:#0B0F14;border-bottom:1px solid #1F2937;display:flex;justify-content:space-between;align-items:center}
+.pane-head b{font-size:13px}
+.pane-head span{font-size:11px;color:#9CA3AF}
+.pane iframe{flex:1;border:0;background:#fff}
+.controls{padding:10px 14px;background:#0B0F14;border-top:1px solid #1F2937;display:flex;gap:8px;flex-wrap:wrap}
+.lesson{max-width:1080px;margin:0 auto;padding:24px}
+.card{background:#111827;border:1px solid #1F2937;border-radius:16px;padding:20px;margin:16px 0}
+.card h2{font-size:18px;margin-bottom:8px;display:flex;gap:10px;align-items:center}
+.badge{width:28px;height:28px;border-radius:50%;background:#E60000;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px;flex-shrink:0}
+.card h3{font-size:13px;color:#E60000;margin:12px 0 6px;letter-spacing:.04em;text-transform:uppercase}
+pre{background:#0B1020;color:#A5B4FC;padding:12px;border-radius:10px;overflow:auto;font-size:12px;margin:8px 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.highlight{outline:3px solid #E60000;outline-offset:2px;animation:pulse 2s infinite}
+@keyframes pulse{0%{outline-color:#E60000}50%{outline-color:#FBBF24}100%{outline-color:#E60000}}
+.teacher{background:#FEF3C7;color:#92400E;border:1px solid #FDE68A;border-radius:12px;padding:12px 14px;margin:10px 0;font-size:13px}
+.teacher b{color:#92400E}
+@media(max-width:860px){.split{grid-template-columns:1fr;height:auto}.pane{height:60vh}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <h1><span>CLASSROOM</span> — Open Figma & Compare Live</h1>
+  <div>
+    <button class="btn primary" onclick="document.getElementById('figma').src='https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FVmU4CMyskr5EBI0lzhSgs9%2FTEKNIC-EUCHNER---INTERVIEW%3Fnode-id%3D1-152'">↻ Reload Figma</button>
+    <button class="btn" onclick="document.getElementById('site').src='../index.html'">↻ Reload Site</button>
+    <a href="start-here.html" class="btn">START HERE</a>
+    <a href="modules/" class="btn">Modules (11)</a>
+  </div>
+</div>
+
+<div class="split">
+  <div class="pane">
+    <div class="pane-head"><b>LEFT — Figma Web App (Real File)</b><span>1-152 • 1440×7592 • Click any layer → Right panel</span></div>
+    <iframe id="figma" src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FVmU4CMyskr5EBI0lzhSgs9%2FTEKNIC-EUCHNER---INTERVIEW%3Fnode-id%3D1-152" allowfullscreen></iframe>
+    <div class="controls">
+      <button class="btn" onclick="highlightFigma('header')">① Header 80,30</button>
+      <button class="btn" onclick="highlightFigma('hero')">② Hero 80,480</button>
+      <button class="btn" onclick="highlightFigma('products')">③ Products</button>
+      <button class="btn" onclick="window.open('https://www.figma.com/design/VmU4CMyskr5EBI0lzhSgs9/TEKNIC-EUCHNER---INTERVIEW?node-id=1-152','_blank')">Open in Figma App ↗</button>
+    </div>
+  </div>
+  <div class="pane">
+    <div class="pane-head"><b>RIGHT — Your Website (Live Code)</b><span>file:///C:/.../index.html • http://localhost:8199</span></div>
+    <iframe id="site" src="../index.html"></iframe>
+    <div class="controls">
+      <button class="btn" onclick="highlightSite('header')">① Header</button>
+      <button class="btn" onclick="highlightSite('hero')">② Hero</button>
+      <button class="btn" onclick="highlightSite('products')">③ Products</button>
+      <button class="btn primary" onclick="syncScroll()">Sync Scroll ↕</button>
+    </div>
+  </div>
+</div>
+
+<div class="lesson">
+  <div class="card" style="border:2px solid #E60000;background:#111827">
+    <h2>👨‍🏫 Teacher — How to use this classroom</h2>
+    <p style="color:#9CA3AF">Left is <b>real Figma file</b> (web app). Right is <b>your code</b> running live. Click the buttons above — we highlight the same module on both sides so you can compare pixel-perfect while I explain like in class.</p>
+    <div class="teacher"><b>Classroom flow (10 min):</b> I will open Figma, click a layer (e.g., Header), read its X,Y,W,H and Fill on the right, then show the same HTML/CSS on the right. You follow click-by-click. No Dev Mode needed — all values are on the right panel in Design Mode (free).</div>
+  </div>
+
+  <div class="card" id="lesson-header">
+    <h2><span class="badge">1</span> Module 01 — Header (Frame 4) — Compare</h2>
+    <div class="grid2">
+      <div>
+        <h3>LEFT: Figma — Do this</h3>
+        <ol style="margin-left:18px">
+          <li>In <b>LEFT</b> Figma, click top bar <b>Header</b> (dark bar).</li>
+          <li>Right panel shows: <b>W 1280 H 60 X 80 Y 30</b> — note it.</li>
+          <li>Right → <b>Fill</b> → Click dot → <code>#151B20</code> (header bg).</li>
+          <li>Click <b>HOME</b> text → Typography → <code>IBM Plex Mono Medium 14px</code>.</li>
+          <li>Right → <b>Export</b> → Logo image <code>8765...png</code> is already exported.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>RIGHT: Code — See same</h3>
+        <pre>&lt;header class="header"&gt; &lt;!-- 1280x60 at y=30 --&gt;
+  &lt;nav&gt;&lt;a&gt;HOME&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;</pre>
+        <pre>.header{
+  position:fixed; top:30px;
+  left:50%; transform:translateX(-50%);
+  width:1280px; /* X 80 = (1440-1280)/2 */
+  background:#151B20; /* you just copied */
+}</pre>
+        <button class="btn primary" onclick="playModule('01-header-5min-with-voice.mp4')">▶ Play 5-min Header (with voice)</button>
+      </div>
+    </div>
+    <div class="teacher"><b>Teacher says:</b> “See? Figma says X 80, we do left 50% + 1280 centered = 80 gutters on 1440. Fill #151B20 becomes background. That’s pixel-perfect.”</div>
+  </div>
+
+  <div class="card" id="lesson-hero">
+    <h2><span class="badge">2</span> Module 02 — Hero (Frame 9) — Compare</h2>
+    <div class="grid2">
+      <div>
+        <h3>LEFT: Figma — Do this</h3>
+        <ol style="margin-left:18px">
+          <li>Click hero background video → Right shows <b>W 1550 H 872 X -55 Y -31</b> (covers 1440×810).</li>
+          <li>Click title <b>“Precision…”</b> → <b>Typography 50.81px / 58px Space Grotesk Bold</b>, Fill <code>#FFFFFF</code>.</li>
+          <li>Click claim on right → <b>X 1064 Y 504 W 296</b> → Note gap <code>1064-(80+587)=397</code>.</li>
+          <li>Click red button → Fill <code>#E60000</code>.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>RIGHT: Code — See same</h3>
+        <pre>&lt;section class="hero"&gt;
+  &lt;video src="hero.mp4"&gt;&lt;/video&gt;
+  &lt;div class="hero__content"&gt; &lt;!-- 1280 at y=480 --&gt;
+    &lt;div class="hero__left"&gt;587px&lt;/div&gt;
+    &lt;div class="hero__right"&gt;296px&lt;/div&gt;
+&lt;/section&gt;</pre>
+        <pre>.hero__media{top:-31px; left:-55px;
+ width:1550px; height:872px}
+.hero__content{top:480px; width:1280px;
+ display:flex; justify-content:space-between}</pre>
+        <button class="btn primary" onclick="playModule('02-hero.mp4')">▶ Play Hero (12s)</button>
+      </div>
+    </div>
+    <div class="teacher"><b>Teacher says:</b> “Left: Figma shows title at 80,480 size 587×94. Right: our hero__left is 587px at same spot. Right claim at 1064 is 296px — gap 397 = 1280. That’s why it’s centered.”</div>
+  </div>
+
+  <div class="card">
+    <h2><span class="badge">3</span> Module 05 — Products (The Big One) — Compare</h2>
+    <div class="grid2">
+      <div>
+        <h3>LEFT: Figma — Do this</h3>
+        <ol style="margin-left:18px">
+          <li>Scroll to products → Click card → <b>W 411 H 574</b> → gap 24 → 3 per row.</li>
+          <li>Click image → Export → <code>6afd91...png</code> (Inductive).</li>
+          <li>Click title → <code>18px Bold Space Grotesk</code>.</li>
+          <li>Click red button → <code>#E60000</code>.</li>
+        </ol>
+      </div>
+      <div>
+        <h3>RIGHT: Code — See same</h3>
+        <pre>&lt;article class="product-card"&gt;
+  &lt;img src="6afd91...png"&gt;
+  &lt;h3&gt;Inductive...&lt;/h3&gt;
+  &lt;a class="btn btn--full"&gt;Explore&lt;/a&gt;
+&lt;/article&gt;</pre>
+        <pre>.products__grid{display:flex; flex-wrap:wrap; gap:24px}
+.product-card{width:31%; /* 411/1280 */}</pre>
+        <button class="btn primary" onclick="playModule('05-products.mp4')">▶ Play Products (12s)</button>
+      </div>
+    </div>
+    <div class="teacher"><b>Teacher says:</b> “Figma 411 width → 31% of 1280 = same. Exported PNG is hash-named 6afd91… — we renamed to .png and used it. That’s extraction.”</div>
+  </div>
+
+  <div class="card" style="background:#FFFBEB;border-color:#FDE68A;color:#92400E">
+    <h2>🎓 Classroom Exercise (Do Now - 5 min)</h2>
+    <ol style="margin-left:18px">
+      <li>Left: In Figma, click <b>any stat card</b> (e.g., “35+ Years”) → Note Fill <code>#121517</code> and size <code>302×252</code>.</li>
+      <li>Right: Open <code>css/desktop.css</code> → Find <code>.stat{background:#121517; min-height:252px}</code> → See same?</li>
+      <li>Left: Click <b>“Why Teknic” card</b> → Typography <code>14px IBM Plex Mono</code> → Right: <code>.why__card h4{font:500 14px}</code></li>
+      <li><b>Raise hand if you can spot the 80px gutter</b> — Left Figma X 80 = Right CSS <code>left:50% + 1280 centered</code>.</li>
+    </ol>
+    <p style="margin-top:12px">Next: Play the 5-min Header with voice in the split view — pause at each 30s slide and compare Figma vs Code side-by-side.</p>
+    <p><a href="modules/01-header-5min-with-voice.mp4" class="btn primary" download>⬇ Download 5-min Header (with voice)</a> <a href="modules/" class="btn">All 11 Modules →</a></p>
+  </div>
+
+  <div class="card">
+    <h2>🔗 All Resources (One Click)</h2>
+    <p><a href="../index.html" class="btn primary">→ Open Website</a> <a href="one-video.mp4" class="btn" style="margin-left:8px">One Video (All Modules)</a> <a href="clean-guide.html" class="btn" style="margin-left:8px">Clean Guide</a> <a href="figma-extract.html" class="btn" style="margin-left:8px">Figma Settings</a></p>
+    <p style="margin-top:10px;font-size:12px;color:#6B7280">Tip: Keep this classroom page open on projector — left Figma, right Website, bottom is your blackboard. Press Sync Scroll to move both together.</p>
+  </div>
+</div>
+
+<script>
+function highlightFigma(m){
+  // Visual cue — flash Figma pane border
+  const f=document.getElementById('figma');
+  f.style.outline='4px solid #E60000';
+  setTimeout(()=>f.style.outline='',1500);
+  // Try to scroll Figma embed to that module (approx via hash)
+  // Figma embed doesn't allow programmatic scroll, so we show a hint
+  alert('In LEFT Figma: ' + (m==='header' ? 'Click top bar Header (W 1280 X 80)' : m==='hero' ? 'Scroll to Hero at Y=0, click title at 80,480' : 'Scroll to Products at Y=1871, 6 cards'));
+}
+function highlightSite(m){
+  const s=document.getElementById('site');
+  s.style.outline='4px solid #E60000';
+  setTimeout(()=>s.style.outline='',1500);
+  // Scroll site iframe to module
+  try{
+    const doc=s.contentWindow.document;
+    const el=doc.getElementById(m) || doc.querySelector('.'+m);
+    if(el) el.scrollIntoView({behavior:'smooth'});
+  }catch(e){ s.contentWindow.scrollTo(0, m==='header'?0: m==='hero'?0: 1800); }
+}
+function syncScroll(){
+  // Simple sync: scroll both to similar Y
+  const f=document.getElementById('figma');
+  const s=document.getElementById('site');
+  f.style.height='60vh'; s.contentWindow.scrollTo({top:600, behavior:'smooth'});
+  alert('Classroom tip: Hold Ctrl and scroll LEFT Figma, then click Sync Scroll to move RIGHT site to same Y (e.g., Header → Hero → Products).');
+}
+function playModule(src){
+  window.open('modules/'+src, '_blank');
+}
+</script>
+</body>
+</html>
