@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Build #header Live — HTML → CSS → Preview | Classroom</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;background:#F8FAFC;color:#111827;line-height:1.7}
+.top{position:sticky;top:0;z-index:10;background:#0B0F14;color:#E5E7EB;padding:10px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.btn{padding:8px 12px;border-radius:8px;border:1px solid #2A3342;background:#1F2937;color:#fff;font-size:12px;text-decoration:none}
+.btn.primary{background:#E60000;border-color:#E60000}
+.wrap{max-width:1080px;margin:0 auto;padding:24px}
+.hero{background:#0B0F14;color:#E5E7EB;border-radius:16px;overflow:hidden;margin-bottom:24px}
+.hero video{width:100%;height:auto;display:block;background:#000}
+.hero-body{padding:16px 20px}
+.hero-body h1{font-size:22px}
+.hero-body p{color:#9CA3AF;font-size:13px;margin-top:6px}
+.steps{display:grid;gap:16px}
+.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px}
+.card h2{font-size:16px;display:flex;gap:10px;align-items:center}
+.badge{width:28px;height:28px;border-radius:50%;background:#E60000;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
+pre{background:#0B1020;color:#A5B4FC;padding:12px;border-radius:10px;overflow:auto;font-size:12px;margin:8px 0}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.compare{border:1px dashed #D1D5DB;background:#F9FAFB;border-radius:12px;padding:14px;text-align:center;font-size:12px;color:#6B7280}
+.teacher{background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:12px;margin:10px 0;font-size:13px}
+@media(max-width:720px){.split{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="top">
+  <b>🏫 LIVE CLASSROOM — Build #header Exactly as Figma</b>
+  <div><a href="classroom.html" class="btn">← Split View</a> <a href="header-classroom.html" class="btn">Deep Dive</a> <a href="../index.html" class="btn primary">Live Header →</a></div>
+</div>
+
+<div class="wrap">
+
+<div class="hero">
+  <video controls autoplay muted poster="../assets/images/876568050c49841d52f64a35fcbec36597932094.png" playsinline>
+    <source src="header-build.mp4" type="video/mp4">
+  </video>
+  <div class="hero-body">
+    <h1>▶ Build #header — HTML → CSS → Preview (Like Real Classroom)</h1>
+    <p>Project view: <b>VS Code (left)</b> + <b>Chrome (right)</b> + <b>Figma (reference)</b> — We type HTML, connect class/id to CSS, write CSS, and preview live. This is how you build header exactly as Figma has it (1280×60 at y=30, #151B20).</p>
+    <p style="margin-top:10px"><a href="header-build.mp4" download class="btn primary">⬇ Download MP4 (0.9 MB)</a> <span style="font-size:12px;color:#9CA3AF;margin-left:8px">2:45 • 1280×720 • 7 steps • No voice — read teacher notes while watching</span></p>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="badge">1</span> Step 1 — Write HTML (2 min) — Watch 0:00-0:45 in video</h2>
+  <p style="color:#6B7280;font-size:13px">Teacher types in VS Code <code>index.html</code> — left pane shows typing, right pane shows explanation.</p>
+  <div class="split">
+    <div>
+      <h3 style="font-size:12px;color:#E60000">VS Code — Typing</h3>
+<pre>&lt;header class="header" id="header"&gt;
+  &lt;div class="header__inner"&gt;
+    &lt;a class="header__logo"&gt;
+      &lt;img src="assets/images/8765...png"
+           width="210" height="22"&gt;
+    &lt;/a&gt;
+    &lt;nav class="header__nav"&gt;
+      &lt;a href="#home"&gt;HOME&lt;/a&gt; ...
+    &lt;/nav&gt;
+    &lt;div class="header__actions"&gt;
+      &lt;button class="icon-btn"&gt;🔍&lt;/button&gt;
+      &lt;a class="btn btn--red"&gt;Talk to an Expert&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+    </div>
+    <div>
+      <h3 style="font-size:12px;color:#60A5FA">Explain Each Line</h3>
+      <div class="compare">
+        <b>Why this HTML?</b><br>
+        header → semantic<br>
+        header__inner → flex<br>
+        img width/height → no layout shift<br>
+        nav aria-label → a11y<br>
+        href="#home" → smooth scroll
+      </div>
+    </div>
+  </div>
+  <div class="teacher"><b>Teacher says:</b> “header tag, not div — interview asks why semantic. nav aria-label Primary — screen reader. img width 210 height 22 prevents shift.”</div>
+</div>
+
+<div class="card">
+  <h2><span class="badge">2</span> Step 2 — Link CSS (30 sec) — Watch 0:45-1:15</h2>
+  <div class="split">
+    <div>
+      <h3>VS Code — index.html head</h3>
+<pre>&lt;head&gt;
+  &lt;link rel="stylesheet" href="css/desktop.css"&gt;
+  &lt;link rel="stylesheet" href="css/mobile.css"&gt;
+&lt;/head&gt;
+&lt;header class="header" id="header"&gt;
+  &lt;!-- class → CSS .header --&gt;
+  &lt;!-- id → JS getElementById --&gt;</pre>
+    </div>
+    <div>
+      <h3>Why class vs id?</h3>
+      <div class="compare">class="header" → CSS <code>.header</code> (reusable)<br>id="header" → JS <code>getElementById</code> (unique)<br>Connect: HTML class → CSS dot</div>
+    </div>
+  </div>
+  <div class="teacher"><b>Teacher:</b> “Class for style, id for JS — basic but interview will ask. Write link, save, we’ll write CSS next.”</div>
+</div>
+
+<div class="card">
+  <h2><span class="badge">3</span> Step 3 — Write CSS Desktop (2 min) — Watch 1:15-2:30</h2>
+  <div class="split">
+    <div>
+      <h3>VS Code — css/desktop.css</h3>
+<pre>.header{
+  position:fixed; /* stays on scroll */
+  top:30px; /* Figma Y 30 */
+  left:50%; transform:translateX(-50%);
+  /* X 80 = (1440-1280)/2 → centered */
+  width:1280px; /* Figma W 1280 */
+  height:60px; /* Figma H 60 */
+  background:#151B20; /* Figma Fill */
+  border-radius:6px;
+}</pre>
+    </div>
+    <div>
+      <h3>Preview — Browser</h3>
+      <div class="compare">Save → Refresh http://localhost:8199<br>Header at top 30, centered 80 gutters<br>Dark #151B20, 60px tall<br>Matches Figma exactly at 80,30</div>
+    </div>
+  </div>
+  <div class="teacher"><b>Teacher:</b> “Why transform not margin-left:-640? Transform works on file:// when window &lt;1280, margin fails → left shift bug we fixed. Why max-width calc(100% -32px)? Keeps 16px gutters on phone.”</div>
+</div>
+
+<div class="card">
+  <h2><span class="badge">4</span> Step 4 — Preview & Compare (1 min) — Watch 2:30-3:15</h2>
+  <div class="split">
+    <div class="compare"><b>Figma</b><br>Click Header → W 1280 H 60 X 80 Y 30<br>Fill #151B20<br>HOME 14px #CAD1D9<br>gap 28</div>
+    <div class="compare"><b>Browser</b><br>Header at top 30, centered 80<br>1280×60, #151B20<br>HOME 14px #CAD1D9<br>gap 28 → matches Figma</div>
+  </div>
+  <p style="font-size:13px;margin-top:10px">Open Figma and browser side-by-side. Click Figma header, read W 1280, look at browser header — same. That’s pixel perfect.</p>
+</div>
+
+<div class="card">
+  <h2><span class="badge">5</span> Step 5 — JS (If Required, 30 sec) — Watch 3:15-3:45</h2>
+  <div class="split">
+    <div>
+<pre>// Burger — basic
+const burger = querySelector('.header__burger');
+burger.addEventListener('click',()=>{
+  nav.classList.toggle('is-open');
+});
+// Hide on scroll
+window.addEventListener('scroll',()=>{
+  header.style.transform=
+   'translateX(-50%) translateY(-88px)';
+});</pre>
+    </div>
+    <div>
+      <h3>When JS needed?</h3>
+      <div class="compare">Desktop: No JS needed<br>Mobile: Burger toggle → JS<br>Scroll: Hide header → JS<br>All basic: querySelector, addEventListener</div>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="background:#F0FDF4;border-color:#BBF7D0;text-align:center">
+  <h2>✅ You Built #header Exactly as Figma — Like Real Classroom</h2>
+  <p>HTML 22 lines + CSS 30 lines + JS 10 lines = Header done. Project view: VS Code left, Chrome right, Figma reference.</p>
+  <p style="margin-top:12px"><a href="classroom.html" class="btn primary">← Back to Split View (All Modules)</a> <a href="../index.html#header" class="btn">View Header Live →</a> <a href="modules/01-header-5min-with-voice.mp4" class="btn">5-min With Voice →</a></p>
+</div>
+
+</div>
+</body>
+</html>
