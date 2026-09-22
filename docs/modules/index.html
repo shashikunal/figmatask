@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modules — Tutor Videos (Header → Footer) | Teknic Euchner</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;background:#F8F9FA;color:#111827;line-height:1.6}
+header{background:#0F0F0F;color:#fff;padding:32px 24px;text-align:center}
+header h1{font-size:28px}
+header p{color:#CAD1D9;margin-top:8px}
+.wrap{max-width:1080px;margin:0 auto;padding:24px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.card video{width:100%;height:180px;object-fit:cover;background:#000;display:block}
+.card-body{padding:16px}
+.card h3{font-size:15px;margin-bottom:4px}
+.card p{font-size:12px;color:#6B7280}
+pre{background:#0B1020;color:#A5B4FC;padding:10px;border-radius:8px;overflow:auto;font-size:11px;margin:8px 0}
+code{background:#F3F4F6;padding:2px 6px;border-radius:6px;font-size:11px}
+.badge{display:inline-block;background:#FEF2F2;color:#991B1B;border:1px solid #FECACA;padding:2px 8px;border-radius:999px;font-size:11px;margin-right:6px}
+.btn{display:inline-block;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;text-decoration:none;border:1px solid #E5E7EB;background:#fff;color:#111}
+.btn.primary{background:#E60000;color:#fff;border-color:#E60000}
+.hero-card{background:#111827;color:#E5E7EB;border-radius:16px;padding:20px;margin-bottom:24px;display:flex;gap:16px;align-items:center}
+.hero-card video{width:320px;height:180px;border-radius:12px;flex-shrink:0}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.hero-card{flex-direction:column}.hero-card video{width:100%}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Modules — Tutor Videos</h1>
+  <p>Header is one module = one video. Each video shows <b>HTML</b> + <b>CSS</b> + <b>JS</b> for that module. Total 11 modules = 11 videos.</p>
+  <p style="margin-top:12px"><a href="../video.html" style="color:#fff;background:#E60000;padding:8px 14px;border-radius:8px;text-decoration:none">← Full 48s Video</a> <a href="../clean-guide.html" style="color:#fff;border:1px solid #333;padding:8px 14px;border-radius:8px;text-decoration:none;margin-left:8px">Clean Guide</a> <a href="../start-here.html" style="color:#fff;border:1px solid #333;padding:8px 14px;border-radius:8px;text-decoration:none;margin-left:8px">START HERE</a></p>
+</header>
+<div class="wrap">
+
+<div class="hero-card">
+  <video controls poster="../../assets/images/ff21ce140248821ed61748595f9c020469feee1b.png"><source src="../tutorial.mp4" type="video/mp4"></video>
+  <div>
+    <h3 style="color:#fff">Full Build — 48s Overview</h3>
+    <p style="color:#9CA3AF;font-size:13px;margin:8px 0">Watch this first — then pick a module below. Each module video is 12s (4 slides: Title → HTML → CSS → JS).</p>
+    <p><span class="badge">11 videos</span><span class="badge">~2.5 min total</span><span class="badge">Basic CSS/JS</span></p>
+  </div>
+</div>
+
+<div class="grid">
+
+  <div class="card">
+    <video controls preload="metadata" poster="../../assets/images/876568050c49841d52f64a35fcbec36597932094.png"><source src="01-header.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>01 — Header <span class="badge">1280×60 y=30</span></h3>
+      <p>Fixed top bar, logo + nav + CTA</p>
+      <pre>&lt;header class="header"&gt;
+  &lt;nav&gt;&lt;a href="#home"&gt;HOME&lt;/a&gt;&lt;/nav&gt;
+  &lt;a class="btn btn--red"&gt;Talk to an Expert&lt;/a&gt;
+&lt;/header&gt;</pre>
+      <pre>.header{position:fixed; top:30px;
+ left:50%; transform:translateX(-50%);
+ width:1280px; background:#151B20}</pre>
+      <pre>// Burger toggle
+burger.addEventListener('click',()=>{
+  nav.classList.toggle('is-open')})</pre>
+      <a href="01-header.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata" poster="../../assets/images/ff21ce140248821ed61748595f9c020469feee1b.png"><source src="02-hero.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>02 — Hero <span class="badge">1440×810</span></h3>
+      <p>Video bg + left 587 + right 296 at y=480</p>
+      <pre>&lt;section class="hero"&gt;
+  &lt;video autoplay muted loop&gt;
+  &lt;div class="hero__content"&gt;
+    &lt;div class="hero__left"&gt;&lt;h1&gt;...&lt;/h1&gt;&lt;/div&gt;
+    &lt;div class="hero__right"&gt;&lt;p&gt;For over...&lt;/p&gt;&lt;/div&gt;
+&lt;/section&gt;</pre>
+      <pre>.hero__media{top:-31px; left:-55px;
+ width:1550px; height:872px}
+.hero__content{top:480px; width:1280px;
+ display:flex; justify-content:space-between}</pre>
+      <pre>// Parallax
+scrollY*0.22 → translateY</pre>
+      <a href="02-hero.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata"><source src="03-intro.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>03 — Intro <span class="badge">1440×490</span></h3>
+      <p>567 + 617 cols, eyebrow + 3 paras</p>
+      <pre>&lt;section class="intro"&gt;
+  &lt;div class="intro__grid"&gt;
+    &lt;div class="intro__left"&gt;...&lt;/div&gt;
+    &lt;div class="intro__right"&gt;...&lt;/div&gt;
+&lt;/section&gt;</pre>
+      <pre>.intro__grid{display:flex; gap:64px}
+.intro__left{width:567px}</pre>
+      <a href="03-intro.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata"><source src="04-experience.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>04 — Experience <span class="badge">Dark 4 stats</span></h3>
+      <p>35+ Years, 1989, Multiple, Pan-India</p>
+      <pre>&lt;div class="stats"&gt;
+  &lt;div class="stat&quot;&gt;35+ Years&lt;/div&gt; x4
+&lt;/div&gt;</pre>
+      <pre>.stats{display:flex; gap:24px}
+.stat{flex:1; background:#121517}</pre>
+      <a href="04-experience.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata" poster="../../assets/images/6afd91a24685d3ba110d216b40d7ef3fc0d758ab.png"><source src="05-products.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>05 — Products <span class="badge">6 cards 3 cols</span></h3>
+      <p>Inductive, Single, Precision, Photoelectric, NK, Cable</p>
+      <pre>&lt;article class="product-card"&gt;
+  &lt;img src="6afd91...png"&gt;
+  &lt;h3&gt;Inductive...&lt;/h3&gt;
+  &lt;a class="btn btn--full"&gt;Explore&lt;/a&gt;
+&lt;/article&gt;</pre>
+      <pre>.products__grid{display:flex; flex-wrap:wrap}
+.product-card{width:31%}</pre>
+      <pre>// 3D tilt on mousemove</pre>
+      <a href="05-products.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata"><source src="06-why.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>06 — Why Teknic <span class="badge">6 cards</span></h3>
+      <p>Built Around, Expertise, Reliable...</p>
+      <pre>&lt;div class="why__grid"&gt;
+  &lt;div class="why__card&quot;&gt;...&lt;/div&gt; x6
+&lt;/div&gt;</pre>
+      <pre>.why__grid{flex-wrap:wrap; gap:20px}
+.why__card{width:31%}</pre>
+      <a href="06-why.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata"><source src="07-machines.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>07 — Machines <span class="badge">6 rows dark</span></h3>
+      <p>Machine Tools … Custom</p>
+      <pre>&lt;div class="machine-row"&gt;
+  &lt;span&gt;01&lt;/span&gt;&lt;span&gt;Machine Tools&lt;/span&gt;
+&lt;/div&gt;</pre>
+      <pre>.machine-row{display:flex; gap:24px;
+ border-bottom:1px solid #333}</pre>
+      <a href="07-machines.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata" poster="../../assets/images/ff21ce140248821ed61748595f9c020469feee1b.png"><source src="08-german.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>08 — German <span class="badge">567 + collage</span></h3>
+      <p>Know-How + 6 images</p>
+      <pre>&lt;div class="german__collage"&gt;
+  &lt;img src="ff21ce...png"&gt; x6
+&lt;/div&gt;</pre>
+      <pre>.german__grid{display:flex}
+.collage__img{width:32%; height:300px}</pre>
+      <a href="08-german.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata" poster="../../assets/images/696aeb716ec13ce4f65204f190cefdcd4d1bbe7c.png"><source src="09-quality.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>09 — Quality <span class="badge">627+585</span></h3>
+      <p>Isn't an Inspection…</p>
+      <pre>&lt;div class="quality__grid"&gt;
+  &lt;div class="quality__left"&gt;...&lt;/div&gt;
+  &lt;div class="quality__right"&gt;&lt;img&gt;&lt;/div&gt;
+&lt;/div&gt;</pre>
+      <pre>.quality__grid{display:flex; gap:68px}
+.quality__right img{height:560px}</pre>
+      <a href="09-quality.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata"><source src="10-cta.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>10 — CTA Find <span class="badge">416 dark</span></h3>
+      <p>Let's Find the Right Solution…</p>
+      <pre>&lt;section class="cta-find"&gt;
+  &lt;div class="cta-find__btns"&gt;
+    &lt;a class="btn btn--red"&gt;Explore&lt;/a&gt;
+&lt;/section&gt;</pre>
+      <pre>.cta-find{text-align:center;
+ background:#0F0F0F}</pre>
+      <a href="10-cta.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <video controls preload="metadata"><source src="11-footer.mp4" type="video/mp4"></video>
+    <div class="card-body">
+      <h3>11 — Footer <span class="badge">4 cols 723</span></h3>
+      <p>Brand + Quick Links + Contact + Follow</p>
+      <pre>&lt;footer class="footer"&gt;
+  &lt;div class="footer__grid"&gt;
+    &lt;div class="footer__brand"&gt;...&lt;/div&gt;
+&lt;/footer&gt;</pre>
+      <pre>.footer__grid{display:flex; gap:32px}
+.footer__brand{width:349px}</pre>
+      <a href="11-footer.mp4" class="btn primary" download>⬇ MP4</a>
+    </div>
+  </div>
+
+</div>
+
+<div style="margin-top:32px;padding:20px;background:#111827;color:#9CA3AF;border-radius:16px;text-align:center">
+  <p>Each video shows <b>HTML → CSS → JS</b> for that module. Basic CSS (flex, width, color) + basic JS (querySelector, IntersectionObserver).</p>
+  <p style="margin-top:8px"><a href="../start-here.html" style="color:#fff;background:#E60000;padding:8px 14px;border-radius:8px;text-decoration:none">← START HERE (Beginner)</a> <a href="../index.html" style="color:#fff;border:1px solid #333;padding:8px 14px;border-radius:8px;text-decoration:none;margin-left:8px">Full Website →</a></p>
+  <p style="margin-top:10px;font-size:12px">C:\Users\Qsp\Desktop\html-js-task\docs\modules\ • Live: https://html-js-task.vercel.app/docs/modules/</p>
+</div>
+
+</div>
+</body>
+</html>
