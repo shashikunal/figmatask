@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>#header — Build Exactly as Figma | Classroom</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;background:#F8FAFC;color:#111827;line-height:1.7}
+a{color:#E60000}
+.top{position:sticky;top:0;z-index:10;background:#0B0F14;color:#E5E7EB;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.top h1{font-size:15px}
+.btn{padding:8px 12px;border-radius:8px;border:1px solid #2A3342;background:#1F2937;color:#fff;font-size:12px;text-decoration:none;display:inline-block}
+.btn.primary{background:#E60000;border-color:#E60000}
+.wrap{max-width:1100px;margin:0 auto;padding:24px}
+.split{display:grid;grid-template-columns:1.1fr 0.9fr;gap:20px}
+@media(max-width:860px){.split{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 2px 12px rgba(0,0,0,.04)}
+.card h2{font-size:17px;margin-bottom:8px;display:flex;gap:10px;align-items:center}
+.badge{width:28px;height:28px;border-radius:50%;background:#E60000;color:#fff;display:grid;place-items:center;font-weight:700;font-size:12px}
+h3{font-size:13px;color:#E60000;margin:14px 0 6px;letter-spacing:.04em;text-transform:uppercase}
+pre{background:#0B1020;color:#E5E7EB;padding:14px;border-radius:10px;overflow:auto;font-size:12.5px;margin:8px 0}
+code{background:#F3F4F6;padding:2px 6px;border-radius:6px;font-size:12px}
+table{width:100%;border-collapse:collapse;margin:8px 0}
+th,td{border:1px solid #E5E7EB;padding:8px;font-size:13px;text-align:left}
+th{background:#F9FAFB;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#6B7280}
+.dot{width:14px;height:14px;border-radius:4px;display:inline-block;vertical-align:middle;margin-right:6px;border:1px solid #ddd}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.compare div{border:1px dashed #D1D5DB;border-radius:12px;padding:14px;background:#F9FAFB;text-align:center;font-size:12px;color:#6B7280}
+.teacher{background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:14px;margin:12px 0;font-size:13px}
+.teacher b{color:#92400E}
+.video{width:100%;height:360px;background:#000;border-radius:12px;overflow:hidden}
+.video video{width:100%;height:100%;object-fit:cover}
+.hl{outline:3px solid #E60000;outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="top">
+  <h1>🏫 CLASSROOM — <span style="color:#E60000">#header</span> Build Exactly as Figma (Header Module)</h1>
+  <div><a href="classroom.html" class="btn">← Classroom Split View</a> <a href="../index.html" class="btn primary" style="margin-left:8px">View Live Header →</a></div>
+</div>
+
+<div class="wrap">
+
+<!-- VIDEO TOP -->
+<div class="card" style="border:2px solid #E60000">
+  <h2><span class="badge">▶</span> Watch First — 5 Min Header With Voice (In-Depth)</h2>
+  <div class="video">
+    <video controls poster="../assets/images/876568050c49841d52f64a35fcbec36597932094.png" style="width:100%;height:100%">
+      <source src="modules/01-header-5min-with-voice.mp4" type="video/mp4">
+    </video>
+  </div>
+  <p style="font-size:12px;color:#6B7280;margin-top:8px">If video not playing → <a href="modules/01-header-5min-with-voice.mp4" download>Download MP4 (4.5 MB)</a> → Open with VLC. Also: <a href="modules/01-header.mp4">12s Short</a> • <a href="modules/01-header-5min.mp4">5min Silent</a></p>
+</div>
+
+<!-- FIGMA SPECS -->
+<div class="card" id="figma">
+  <h2><span class="badge">1</span> FIGMA — What Figma Has for #header</h2>
+  <p style="color:#6B7280;font-size:13px">Open Figma web app → Select <b>Frame 4</b> (top bar) → Right panel shows exact values below. (No Dev Mode needed — all in Design Mode.)</p>
+
+  <div class="compare">
+    <div><b>Left: Figma Canvas</b><br><span style="font-size:11px">1440×7592 • Header at (80,30)</span><br><br><div style="background:#151B20;color:#fff;padding:8px;border-radius:6px;font-size:11px;text-align:left">Frame 4<br>W 1280 &nbsp; H 60 &nbsp; X 80 &nbsp; Y 30<br>Fill #151B20 &nbsp; Radius 6<br>Frame 2 inside: 1132×60</div></div>
+    <div><b>Right: Your Browser</b><br><span style="font-size:11px">file:///C:/.../index.html</span><br><br><div style="background:#151B20;color:#fff;padding:8px;border-radius:6px;font-size:11px;text-align:left">&lt;header class="header"&gt;<br>width:1280 &nbsp; height:60<br>left:50% + 1280 centered = X 80</div></div>
+  </div>
+
+  <h3>Figma Header — Exact Specs (from decoded 577 nodes)</h3>
+  <table>
+    <tr><th>Layer (Figma)</th><th>X Y</th><th>W H</th><th>Color / Font</th><th>Copy</th></tr>
+    <tr><td><b>Frame 4</b> (Header container) <code>1:621</code></td><td>80, 30</td><td>1280 × 60</td><td><span class="dot" style="background:#151B20"></span> Fill <code>#151B20</code> • Radius 6</td><td>CSS <code>width:1280; height:60</code></td></tr>
+    <tr><td><b>Frame 2</b> inside (1132×60)</td><td>—</td><td>1132 × 60</td><td>Inside padding 20px</td><td><code>padding:0 20px</code></td></tr>
+    <tr><td><b>Logo image</b> <code>8765...png</code> <code>1:623</code></td><td>~20, 19</td><td>210 × 22</td><td>Image 575×61</td><td><code>&lt;img src="8765...png" width=210&gt;</code></td></tr>
+    <tr><td><b>Nav links</b> HOME etc. (5×)</td><td>center</td><td>~73 × 11 each</td><td><code>IBM Plex Mono Medium 14px</code> • <span class="dot" style="background:#CAD1D9"></span> <code>#CAD1D9</code> → <code>#FFFFFF</code> hover</td><td><code>font:500 14px IBM Plex Mono</code></td></tr>
+    <tr><td><b>Gap nav</b></td><td>—</td><td>28px between links</td><td>—</td><td><code>gap:28px</code></td></tr>
+    <tr><td><b>Button</b> “Talk to an Expert”</td><td>right</td><td>~148 × 38</td><td><span class="dot" style="background:#E60000"></span> <code>#E60000</code> • White text</td><td><code>background:#E60000</code></td></tr>
+    <tr><td><b>Icon btn</b> search 40×40</td><td>right-160</td><td>40 × 40</td><td>Border <code>#333</code> • <code>#CAD1D9</code> icon</td><td><code>width:40px; border:1px solid #333</code></td></tr>
+  </table>
+
+  <div class="teacher"><b>Teacher (like in class):</b> “Look left Figma — top shows W 1280 H 60 X 80 Y 30. That X 80 is (1440-1280)/2 = 80px gutters. Right panel Fill #151B20 — that’s header background. Click HOME → Typography shows IBM Plex Mono 14 — we’ll paste that. See the 28px gap between HOME and ABOUT? That’s gap:28px in CSS. Everyone see?”</div>
+</div>
+
+<!-- HTML -->
+<div class="card" id="html">
+  <h2><span class="badge">2</span> HTML — Build #header Exactly</h2>
+  <p style="color:#6B7280;font-size:13px">Semantic, BEM, accessible — copy this exactly.</p>
+<pre>&lt;!-- HEADER 1:621 — 1280x60 at y=30 — fixed top bar --&gt;
+&lt;header class="header" id="header"&gt;  &lt;!-- id for JS scroll hide --&gt;
+  &lt;div class="header__inner"&gt;  &lt;!-- flex container: logo left, nav center, actions right --&gt;
+
+    &lt;!-- Logo: 210x22 image 8765...png at ~20,19 inside header --&gt;
+    &lt;a href="#" class="header__logo"&gt;
+      &lt;img src="assets/images/876568050c49841d52f64a35fcbec36597932094.png"
+           alt="Teknic Euchner" width="210" height="22"&gt;
+    &lt;/a&gt;
+
+    &lt;!-- Nav: 5 links, 28px gap, IBM Plex Mono 14px #CAD1D9 --&gt;
+    &lt;nav class="header__nav" aria-label="Primary"&gt;  &lt;!-- aria for screen reader --&gt;
+      &lt;a href="#home" class="nav__link is-active"&gt;HOME&lt;/a&gt; &lt;!-- is-active = current page white --&gt;
+      &lt;a href="#about" class="nav__link"&gt;ABOUT&lt;/a&gt;
+      &lt;a href="#products" class="nav__link"&gt;PRODUCTS&lt;/a&gt;
+      &lt;a href="#dealers" class="nav__link"&gt;DEALERS&lt;/a&gt;
+      &lt;a href="#contact" class="nav__link"&gt;CONTACT&lt;/a&gt;
+    &lt;/nav&gt;
+
+    &lt;!-- Actions: search 40x40 + red CTA 148x38 #E60000 --&gt;
+    &lt;div class="header__actions"&gt;
+      &lt;button class="icon-btn" aria-label="Search"&gt; &lt;!-- 40x40 border #333 --&gt;
+        &lt;svg&gt;...search icon...&lt;/svg&gt;
+      &lt;/button&gt;
+      &lt;a href="#contact" class="btn btn--red"&gt;Talk to an Expert&lt;/a&gt; &lt;!-- #E60000 --&gt;
+    &lt;/div&gt;
+
+    &lt;!-- Burger: hidden desktop, shown mobile --&gt;
+    &lt;button class="header__burger" aria-label="Menu"&gt;
+      &lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;
+    &lt;/button&gt;
+
+  &lt;/div&gt;
+&lt;/header&gt;</pre>
+  <div class="teacher"><b>Teacher:</b> “Why header tag? Semantic — SEO knows it’s navigation. Why aria-label? Screen reader says ‘Primary navigation’. Why width/height on img? Prevents layout shift before image loads. Why href #home? Enables smooth scroll to section. Copy exactly — interview will ask ‘why semantic?’”</div>
+</div>
+
+<!-- CSS -->
+<div class="card" id="css">
+  <h2><span class="badge">3</span> CSS — Style #header Exactly (Basic, No Advanced)</h2>
+  <p style="color:#6B7280;font-size:13px">In <code>css/desktop.css</code> — basic flex, fixed, transform. Each line matches Figma.</p>
+
+  <h3>Desktop CSS (1440) — Copy line by line</h3>
+<pre>/* HEADER 1:621 — 1280x60 at y=30 — FIX: was margin-left:-640 now transform */
+.header{
+  position:fixed;      /* stays visible when you scroll */
+  top:30px;            /* Figma Y 30 */
+  left:50%;            /* center trick */
+  transform:translateX(-50%); /* moves left half width → centered → X 80 on 1440 */
+  width:1280px;        /* Figma W 1280 */
+  max-width:calc(100% - 32px); /* keeps 16px gutters when window <1280, prevents left shift */
+  height:60px;         /* Figma H 60 */
+  background:#151B20;  /* Figma Fill #151B20 you copied */
+  border-radius:6px;   /* Figma Radius 6 */
+  z-index:100;         /* stays above hero video */
+}
+.header__inner{
+  display:flex;                /* basic flex row */
+  justify-content:space-between; /* logo left, nav center, actions right */
+  align-items:center;
+  height:100%;
+  padding:0 20px;              /* inner padding 20px as Figma Frame 2 */
+}
+.header__logo img{ height:22px; } /* Figma 22 */
+.header__nav{ display:flex; gap:28px; } /* Figma 28px between links */
+.nav__link{
+  font-family:'IBM Plex Mono', monospace;
+  font-weight:500; font-size:14px; /* Figma 14 */
+  color:#CAD1D9; /* Figma #CAD1D9 */
+  text-transform:uppercase;
+}
+.nav__link:hover{ color:#FFFFFF; } /* hover white */
+.header__actions{ display:flex; gap:16px; }
+.icon-btn{
+  width:40px; height:40px; /* Figma 40x40 */
+  border:1px solid #333; border-radius:6px;
+  background:transparent; /* transparent with border */
+}
+.btn--red{ background:#E60000; color:#fff; } /* Figma #E60000 */
+.header__burger{ display:none; } /* hidden on desktop, shown mobile */</pre>
+
+  <h3>Mobile CSS — Separate file (Basic)</h3>
+  <p style="font-size:13px">In <code>css/mobile.css</code> — this file is optional. Remove its link to <b>ignore responsive</b> as you requested.</p>
+<pre>@media(max-width:720px){
+  .header{ top:12px; } /* smaller top on phone */
+  .header__nav{ display:none; } /* hide desktop nav */
+  .header__actions .icon-btn{ display:none; }
+  .header__burger{ display:flex; /* show hamburger */
+    flex-direction:column; gap:5px; }
+  .header__burger span{
+    width:22px; height:2px; background:#fff;
+  }
+}</pre>
+  <pre>&lt;!-- In HTML head — separate files for interview --&gt;
+&lt;link rel="stylesheet" href="css/desktop.css"&gt; &lt;!-- desktop only --&gt;
+&lt;link rel="stylesheet" href="css/mobile.css"&gt;  &lt;!-- remove to ignore responsive --&gt;</pre>
+  <div class="teacher"><b>Teacher:</b> “Why left:50% + transform? Old margin-left:-640 fails when window <1280 — header moves left. Transform + max-width fixes file:/// left shift. Why max-width calc(100% -32px)? Keeps 16px gutters on phone. Copy exactly — interview will ask ‘why transform vs margin?’”</div>
+</div>
+
+<!-- JS -->
+<div class="card" id="js">
+  <h2><span class="badge">4</span> JS — Interaction for #header (If Required, Basic)</h2>
+  <p style="color:#6B7280;font-size:13px">Header needs 2 JS features — both basic for interview.</p>
+
+  <h3>1. Burger Toggle (Mobile) — Basic DOM + Events</h3>
+<pre>// Select elements (basic querySelector)
+const burger = document.querySelector('.header__burger');
+const nav = document.querySelector('.header__nav');
+
+// Click event (basic addEventListener)
+burger.addEventListener('click', () => {
+  const isOpen = nav.classList.toggle('is-open'); // toggle class
+  nav.style.display = isOpen ? 'flex' : ''; // show/hide nav
+  nav.style.position = isOpen ? 'absolute' : '';
+  nav.style.top = isOpen ? '70px' : '';
+  nav.style.background = isOpen ? '#151B20' : '';
+});</pre>
+  <p style="font-size:12px;color:#6B7280">Interview Q: “What is classList.toggle?” — A: Adds class if missing, removes if present. Basic.</p>
+
+  <h3>2. Hide on Scroll + Smooth Scroll (Basic)</h3>
+<pre>// Hide header when scrolling down past 400px
+let lastY = 0;
+window.addEventListener('scroll', () => {
+  const y = window.scrollY; // current scroll
+  if (y > 400 && y > lastY) {
+    header.style.transform = 'translateX(-50%) translateY(-88px)'; // hide up
+  } else {
+    header.style.transform = 'translateX(-50%) translateY(0)'; // show
+  }
+  lastY = y;
+}, {passive:true});
+
+// Smooth scroll with offset for fixed header (72px)
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault(); // stop jump
+    const target = document.querySelector(a.getAttribute('href'));
+    const top = target.getBoundingClientRect().top + scrollY - 72;
+    window.scrollTo({top, behavior:'smooth'});
+  });
+});</pre>
+  <p style="font-size:12px;color:#6B7280">Why -72? Header height 60 + 12 gap — so title not hidden under fixed header. Basic scrollTo API.</p>
+
+  <div class="teacher"><b>Teacher:</b> “No JS needed for desktop header — only mobile burger and scroll. All use basic: querySelector, addEventListener, classList, style, scrollTo. Easy to explain.”</div>
+</div>
+
+<!-- COMPARE LIVE -->
+<div class="card" style="border:2px solid #111827">
+  <h2>🔍 Compare Live — Figma vs Your Code (Do Now)</h2>
+  <div class="compare">
+    <div><b>LEFT: Figma</b><br><iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fdesign%2FVmU4CMyskr5EBI0lzhSgs9%2FTEKNIC-EUCHNER---INTERVIEW%3Fnode-id%3D1-152" style="width:100%;height:240px;border:1px solid #E5E7EB;border-radius:8px" allowfullscreen></iframe><br><span style="font-size:11px">Click header → See W 1280 X 80</span></div>
+    <div><b>RIGHT: Code</b><br><iframe src="../index.html" style="width:100%;height:240px;border:1px solid #E5E7EB;border-radius:8px"></iframe><br><span style="font-size:11px">Header at top 30, centered 80 gutters</span></div>
+  </div>
+  <p style="margin-top:12px"><b>Exercise (2 min):</b> Left: Click <b>HOME</b> → Note <code>14px #CAD1D9</code> → Right: Find <code>css/desktop.css .nav__link{font:14px; color:#CAD1D9}</code> — same? Raise hand.</p>
+</div>
+
+<div class="card" style="background:#F0FDF4;border-color:#BBF7D0;text-align:center">
+  <h2>✅ You Built #header Exactly as Figma</h2>
+  <p>HTML 22 lines + CSS 30 lines + JS 10 lines = Header done. Next: Use same method for Hero (02) → <a href="modules/02-hero.mp4">Watch Hero 12s</a></p>
+  <p style="margin-top:12px"><a href="classroom.html" class="btn primary">← Back to Classroom (All Modules)</a> <a href="../index.html#header" class="btn" style="margin-left:8px">View Header on Site →</a> <a href="modules/01-header-5min-with-voice.mp4" class="btn" style="margin-left:8px">▶ 5-min Header (with voice)</a></p>
+</div>
+
+</div>
+
+<footer style="max-width:1100px;margin:0 auto;padding:20px;text-align:center;color:#9CA3AF;font-size:12px">
+  <p>Classroom #header — Figma Frame 4 (80,30) 1280×60 → HTML/CSS/JS • C:\Users\Qsp\Desktop\html-js-task\docs\header-classroom.html • Live: https://html-js-task.vercel.app/docs/header-classroom.html</p>
+</footer>
+</body>
+</html>
