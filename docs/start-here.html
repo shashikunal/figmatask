@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>START HERE — Figma to Website in 10 Minutes (for Beginners)</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;background:#fff;color:#111827;line-height:1.7}
+.hero{max-width:840px;margin:0 auto;padding:48px 24px 16px;text-align:center}
+.hero h1{font-size:34px;line-height:1.15}
+.hero h1 span{background:#E60000;color:#fff;padding:2px 8px;border-radius:8px}
+.hero p{color:#6B7280;margin-top:12px}
+.progress{max-width:840px;margin:0 auto;padding:0 24px}
+.bar{height:8px;background:#F3F4F6;border-radius:999px;overflow:hidden}
+.fill{height:100%;width:0%;background:#E60000;transition:width .3s}
+.wrap{max-width:840px;margin:0 auto;padding:24px}
+.card{border:1px solid #E5E7EB;border-radius:20px;padding:24px;margin:20px 0;background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.04)}
+.card h2{font-size:18px;margin-bottom:6px;display:flex;gap:10px;align-items:center}
+.badge{width:32px;height:32px;border-radius:50%;background:#111827;color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex-shrink:0}
+.badge.red{background:#E60000}
+.card h3{font-size:14px;color:#E60000;margin:14px 0 6px;letter-spacing:.04em;text-transform:uppercase}
+pre{background:#0B1020;color:#E5E7EB;padding:14px;border-radius:12px;overflow:auto;font-size:13px;margin:8px 0}
+code{background:#F3F4F6;padding:2px 6px;border-radius:6px;font-size:12.5px}
+.figma-box{background:#F9FAFB;border:1px dashed #D1D5DB;border-radius:12px;padding:16px;margin:10px 0;text-align:center;color:#6B7280;font-size:13px}
+.figma-box b{color:#111827}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid #E5E7EB;text-decoration:none}
+.btn.primary{background:#E60000;color:#fff;border-color:#E60000}
+.btn.dark{background:#111827;color:#fff}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:640px){.grid2{grid-template-columns:1fr}.hero h1{font-size:26px}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>START HERE — <span>Figma → Website</span> in 10 Minutes</h1>
+  <p>For students who are still confused. No jargon. Just click where I click. Follow 1→10 and you will have the same website live.</p>
+  <p style="margin-top:14px">
+    <a href="tutorial.mp4" class="btn primary" download>▶ Watch 48s Video</a>
+    <a href="video.html" class="btn" style="margin-left:8px">Video Steps</a>
+    <a href="../index.html" class="btn dark" style="margin-left:8px">See Final Website</a>
+  </p>
+</div>
+
+<div class="progress"><div class="bar"><div class="fill" id="fill"></div></div><p style="font-size:12px;color:#9CA3AF;margin-top:6px;text-align:center">Scroll down — progress fills as you read</p></div>
+
+<div class="wrap">
+
+<div class="card">
+  <h2><span class="badge">0</span> What you need (1 minute)</h2>
+  <p>You have <b>2 things</b>: Figma link <code>https://www.figma.com/design/VmU4CMyskr5EBI0lzhSgs9/...</code> and this folder <code>C:\Users\Qsp\Desktop\html-js-task\</code> (already built). If you want to rebuild yourself, open <b>VS Code</b> and <b>Chrome</b>.</p>
+  <div class="grid2">
+    <div class="figma-box"><b>Chrome</b><br>Open Figma web app</div>
+    <div class="figma-box"><b>VS Code</b><br>Open folder html-js-task</div>
+  </div>
+</div>
+
+<div class="card">
+  <h2><span class="badge red">1</span> Open Figma Web App (click by click)</h2>
+  <h3>Do this:</h3>
+  <ol style="margin-left:18px">
+    <li>Open <b>Chrome</b> → Paste Figma link → Press Enter → Log in.</li>
+    <li>Top bar → Click <b>Duplicate to drafts</b> (so you can click layers).</li>
+    <li>Press <span style="background:#111827;color:#fff;padding:2px 6px;border-radius:6px">Shift + D</span> → Top shows <b>Dev Mode</b> (not Design). Dev Mode = where you copy code.</li>
+    <li>Press <span style="background:#111827;color:#fff;padding:2px 6px;border-radius:6px">Shift + R</span> → Rulers appear (you see X=80, Y=480 for hero).</li>
+  </ol>
+  <div class="figma-box">Figma Top Bar: [ Design | <b>Dev Mode</b> ] ← Click Dev Mode<br>Right panel now shows <b>Inspect → CSS</b></div>
+  <p style="font-size:13px;color:#6B7280"><b>Result:</b> You can now click any layer and see its color/font/size on the right.</p>
+</div>
+
+<div class="card">
+  <h2><span class="badge red">2</span> Copy a COLOR (30 seconds)</h2>
+  <h3>Try: Get the red button color</h3>
+  <ol style="margin-left:18px">
+    <li>In Figma, <b>click the red button</b> “Talk to an Expert” (top right).</li>
+    <li>Right panel → <b>Fill</b> → See color dot → Click it → Shows <code>#E60000</code> → Click <b>copy icon</b>.</li>
+    <li>Alternative: Dev Mode → Right <b>Inspect → Colors</b> → Shows <code>#E60000</code> → Copy.</li>
+  </ol>
+  <pre>/* Paste in css/desktop.css */
+.btn--red{ background:#E60000; } /* you just copied */</pre>
+  <p><b>Repeat for 4 colors:</b> Header <code>#151B20</code> → Dark <code>#0F0F0F</code> → Muted <code>#5C5C5C</code> → Light <code>#CAD1D9</code></p>
+</div>
+
+<div class="card">
+  <h2><span class="badge red">3</span> Copy a FONT (30 seconds)</h2>
+  <h3>Try: Get hero title font</h3>
+  <ol style="margin-left:18px">
+    <li>Click text <b>“Precision That Keeps…”</b> in Figma.</li>
+    <li>Right panel → <b>Typography</b> → Shows <code>Space Grotesk Bold 50.81px / 58px</code></li>
+    <li>Dev Mode → <b>Inspect → Typography</b> → Copy:
+      <pre>font-family: 'Space Grotesk';
+font-weight: 700;
+font-size: 50.81px;
+line-height: 58px;</pre>
+    </li>
+  </ol>
+  <div class="grid2">
+    <div style="border:1px solid #E5E7EB;padding:12px;border-radius:10px"><b>H1 Hero</b><br>Space Grotesk Bold 50.81</div>
+    <div style="border:1px solid #E5E7EB;padding:12px;border-radius:10px"><b>Eyebrow</b><br>IBM Plex Mono Medium 16px UPPER</div>
+  </div>
+  <p>Add to HTML head:</p>
+  <pre>&lt;link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap"&gt;</pre>
+</div>
+
+<div class="card">
+  <h2><span class="badge red">4</span> Download an IMAGE (30 seconds)</h2>
+  <h3>Try: Download one product image</h3>
+  <ol style="margin-left:18px">
+    <li>Click product image (e.g., Inductive switch).</li>
+    <li>Right panel bottom → <b>Export → + → PNG → Export</b> → Saves to Downloads.</li>
+    <li>Move file to <code>assets/images/</code> in VS Code.</li>
+    <li>Use in HTML: <pre>&lt;img src="assets/images/6afd91...png" alt="Inductive"&gt;</pre></li>
+  </ol>
+  <p><b>Bulk:</b> <code>File → Export → Export all</code> → Gets all 44 PNGs at once.</p>
+</div>
+
+<div class="card">
+  <h2><span class="badge red">5</span> Get the VIDEO (1 minute)</h2>
+  <h3>Hero video is hidden</h3>
+  <ol style="margin-left:18px">
+    <li>Select hero background (big image) → Right Fill shows <b>Video thumbnail</b> (no Export button).</li>
+    <li><b>Easiest:</b> Download <code>TEKNIC EUCHNER - INTERVIEW.fig.zip</code> → Unzip → <code>videos/851ad... (28MB)</code> → Rename to <code>hero.mp4</code> → Put in <code>assets/</code></li>
+    <li>In HTML: <pre>&lt;video autoplay muted loop playsinline poster="ff21ce...png"&gt;
+  &lt;source src="assets/hero.mp4"&gt;
+&lt;/video&gt;</pre></li>
+  </ol>
+  <p style="font-size:13px;color:#6B7280">Web app alone can’t export video — need the zip (we already did for you).</p>
+</div>
+
+<div class="card">
+  <h2><span class="badge">6</span> Copy CSS for position (1 minute)</h2>
+  <h3>Try: Where is hero text?</h3>
+  <ol style="margin-left:18px">
+    <li>Dev Mode → Click hero title → Right <b>CSS</b> tab shows <code>left: 80px; top: 480px; width: 587px</code></li>
+    <li>Click claim text on right → Shows <code>left: 1064px; top: 504px; width: 296px</code></li>
+    <li>Hold <b>Alt</b> and hover between them → Red line shows gap <code>397px</code> → <code>587 + 397 + 296 = 1280</code> centered.</li>
+  </ol>
+  <pre>.hero__content{
+  position:absolute; top:480px; left:50%;
+  transform:translateX(-50%); /* centers 1280 */
+  width:1280px;
+  display:flex; justify-content:space-between;
+}
+.hero__left{width:587px} /* at 80 */
+.hero__right{width:296px} /* at 1064 */</pre>
+</div>
+
+<div class="card">
+  <h2><span class="badge">7</span> Paste into HTML (2 minutes)</h2>
+  <p>Open VS Code → <code>index.html</code> → Paste the structure you copied. We use <b>semantic tags</b>: <code>header</code>, <code>section</code>, <code>article</code>, <code>nav</code>.</p>
+  <pre>&lt;header class="header"&gt;  &lt;!-- top bar 1280x60 --&gt;
+  &lt;img src="assets/images/8765...png"&gt; &lt;!-- logo --&gt;
+  &lt;nav&gt;&lt;a href="#home"&gt;HOME&lt;/a&gt;&lt;/nav&gt;
+&lt;/header&gt;
+&lt;section class="hero"&gt; &lt;!-- 1440x810 --&gt;
+  &lt;video&gt;&lt;/video&gt;
+  &lt;div class="hero__content"&gt;...&lt;/div&gt;
+&lt;/section&gt;</pre>
+  <p>Each <code>id="home"</code> matches nav <code>href="#home"</code> for smooth scroll.</p>
+</div>
+
+<div class="card">
+  <h2><span class="badge">8</span> Paste into CSS (2 minutes)</h2>
+  <p>Open <code>css/desktop.css</code> (basic) → Paste colors/fonts/sizes you copied. No advanced math — just <code>flex</code>, <code>width</code>, <code>color</code>.</p>
+  <div class="grid2">
+    <div><b>desktop.css</b> (1440) <pre>.container{width:1280px}</pre></div>
+    <div><b>mobile.css</b> (phone) <pre>@media(720px){
+  .product-card{width:100%}
+}</pre></div>
+  </div>
+  <p>Link both in HTML: <code>&lt;link href="css/desktop.css"&gt;</code> + <code>&lt;link href="css/mobile.css"&gt;</code> (remove mobile to ignore responsive).</p>
+</div>
+
+<div class="card">
+  <h2><span class="badge">9</span> Paste into JS (1 minute, basic)</h2>
+  <p>Open <code>js/app.js</code> — copy 3 blocks, each is 5 lines:</p>
+  <pre>// Reveal on scroll (basic)
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('is-visible') })
+});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));</pre>
+  <pre>// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    scrollTo({top: document.querySelector(a.hash).offsetTop -72, behavior:'smooth'})
+  })
+})</pre>
+  <p>That’s it — 3 basics: <code>querySelector</code>, <code>addEventListener</code>, <code>classList</code>.</p>
+</div>
+
+<div class="card" style="border:2px solid #E60000;background:#FFFBEB">
+  <h2><span class="badge red">10</span> Run it (30 seconds)</h2>
+  <ol style="margin-left:18px">
+    <li><b>Double-click</b> <code>C:\Users\Qsp\Desktop\html-js-task\index.html</code> → Opens <code>file:///C:/...</code> → Header stays centered (we fixed).</li>
+    <li>Or in VS Code terminal: <code>python -m http.server 8199 --directory C:\Users\Qsp\Desktop\html-js-task</code> → Open <code>http://localhost:8199</code></li>
+    <li>Live: <code>https://html-js-task.vercel.app</code> (already deployed).</li>
+  </ol>
+  <p style="margin-top:12px">
+    <a href="../index.html" class="btn primary">→ Open Website</a>
+    <a href="video.html" class="btn" style="margin-left:8px">→ Watch Video</a>
+    <a href="clean-guide.html" class="btn" style="margin-left:8px">→ Detailed Guide</a>
+  </p>
+</div>
+
+<div class="card" style="background:#F9FAFB">
+  <h2>Still stuck? Do this now (30-second checklist)</h2>
+  <ol style="margin-left:18px">
+    <li>Open Figma web app → Dev Mode → Click <b>red button</b> → Copy <code>#E60000</code> → Paste in CSS → See it change? You did it.</li>
+    <li>Click <b>hero title</b> → Copy <code>50.81px</code> → Paste in CSS → Title gets bigger? You did it.</li>
+    <li>Select <b>image</b> → Export → See PNG in Downloads? You did it.</li>
+  </ol>
+  <p><b>Need help?</b> Open <code>docs/video.html</code> and press Play — it highlights each step as the video plays. Or read <code>docs/video-script.md</code> narration.</p>
+</div>
+
+</div>
+
+<footer style="max-width:840px;margin:0 auto;padding:24px;text-align:center;color:#9CA3AF">
+  <p>START HERE guide • C:\Users\Qsp\Desktop\html-js-task\docs\start-here.html • Also at https://html-js-task.vercel.app/docs/start-here.html</p>
+</footer>
+
+<script>
+const fill=document.getElementById('fill');
+window.addEventListener('scroll',()=>{
+  const pct = window.scrollY / (document.body.scrollHeight - window.innerHeight) * 100;
+  fill.style.width = pct + '%';
+});
+</script>
+</body>
+</html>
