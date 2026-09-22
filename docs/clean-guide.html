@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clean Guide — Extract from Figma Web App to HTML/CSS/JS</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,'Segoe UI',Arial,sans-serif;background:#fff;color:#111827;line-height:1.75}
+a{color:#E60000;text-decoration:none}
+a:hover{text-decoration:underline}
+.nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #E5E7EB;z-index:10}
+.nav-inner{max-width:1080px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.nav b{font-size:15px}
+.nav a{font-size:13px;margin-left:16px}
+.hero{max-width:1080px;margin:0 auto;padding:48px 24px 24px}
+.hero h1{font-size:36px;line-height:1.15;letter-spacing:-1px}
+.hero h1 span{color:#E60000}
+.hero p{color:#6B7280;margin-top:12px;max-width:700px;font-size:16px}
+.badges{margin-top:16px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{font-size:12px;padding:6px 10px;border-radius:999px;background:#F3F4F6;border:1px solid #E5E7EB}
+.badge.red{background:#FEF2F2;border-color:#FECACA;color:#991B1B}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px 48px}
+.toc{background:#F9FAFB;border:1px solid #E5E7EB;border-radius:16px;padding:20px 24px;margin:24px 0}
+.toc h3{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#6B7280;margin-bottom:10px}
+.toc ol{margin-left:18px}
+.toc li{font-size:14px;margin:6px 0}
+.toc a{color:#111827}
+h2{font-size:22px;margin:44px 0 12px;padding-top:16px;border-top:1px solid #F3F4F6}
+h3{font-size:17px;margin:22px 0 8px}
+h4{font-size:14px;margin:14px 0 6px;color:#E60000;letter-spacing:.02em;text-transform:uppercase}
+p{font-size:14.5px;margin:8px 0;color:#374151}
+ul,ol{margin-left:22px}
+li{font-size:14.5px;margin:6px 0;color:#374151}
+.step{background:#fff;border:1px solid #E5E7EB;border-radius:16px;padding:22px;margin:16px 0}
+.step-head{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.num{width:32px;height:32px;border-radius:50%;background:#111827;color:#fff;display:grid;place-items:center;font-weight:700;font-size:14px;flex-shrink:0}
+.num.red{background:#E60000}
+.kbd{font-family:monospace;background:#111827;color:#fff;padding:2px 6px;border-radius:6px;font-size:12px}
+pre{background:#0B1020;color:#E5E7EB;padding:16px;border-radius:12px;overflow:auto;font-size:13px;line-height:1.6;margin:10px 0}
+code{background:#F3F4F6;padding:2px 6px;border-radius:6px;font-size:12.5px}
+table{width:100%;border-collapse:collapse;margin:10px 0;background:#fff;border:1px solid #E5E7EB;border-radius:12px;overflow:hidden}
+th,td{padding:10px 12px;text-align:left;font-size:13.5px;border-bottom:1px solid #F3F4F6}
+th{background:#F9FAFB;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#6B7280}
+.dot{width:14px;height:14px;border-radius:4px;display:inline-block;vertical-align:middle;margin-right:6px;border:1px solid #ddd}
+.callout{background:#FFFBEB;border:1px solid #FDE68A;border-radius:12px;padding:12px 14px;margin:10px 0;font-size:13.5px}
+.callout b{color:#92400E}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{border:1px solid #E5E7EB;border-radius:12px;padding:16px;background:#fff}
+.card h4{margin:0 0 6px}
+.muted{color:#6B7280;font-size:13px}
+footer{margin-top:36px;padding:24px;background:#0F0F0F;color:#9CA3AF;border-radius:16px;text-align:center}
+.btn{display:inline-block;padding:10px 14px;border-radius:10px;font-size:13px;font-weight:600;border:1px solid #E5E7EB}
+.btn-primary{background:#E60000;color:#fff;border-color:#E60000}
+@media(max-width:720px){.hero h1{font-size:26px}.grid2{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="nav-inner"><b>TEKNIC EUCHNER — Clean Extraction Guide</b><div><a href="index.html">Full Guide</a><a href="figma-extract.html">Figma Settings</a><a href="../index.html">Website →</a></div></div></div>
+
+<div class="hero">
+  <h1>From Figma Web App<br>to <span>HTML / CSS / JS</span> — Step by Step</h1>
+  <p>Neat, clean workflow for students. No plugins needed — just the Figma web app (browser) + Dev Mode. You will extract assets, colors, fonts, videos, CSS and map them to HTML/CSS/JS pixel-perfect (1440×7592, 577 nodes).</p>
+  <div class="badges">
+    <span class="badge red">Figma Web App (Chrome)</span>
+    <span class="badge">Dev Mode</span>
+    <span class="badge">1440×7592</span>
+    <span class="badge">44 PNG + 1 MP4</span>
+    <span class="badge">file:/// ready</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+<div class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#s0">Open Figma Web App</a></li>
+    <li><a href="#s1">Extract Colors</a></li>
+    <li><a href="#s2">Extract Fonts</a></li>
+    <li><a href="#s3">Extract Images (Assets)</a></li>
+    <li><a href="#s4">Extract Videos</a></li>
+    <li><a href="#s5">Copy CSS from Dev Mode</a></li>
+    <li><a href="#s6">Create HTML (structure)</a></li>
+    <li><a href="#s7">Create CSS (desktop + mobile separate)</a></li>
+    <li><a href="#s8">Create JS (basic animations)</a></li>
+    <li><a href="#s9">Run & Verify</a></li>
+  </ol>
+</div>
+
+<h2 id="s0">0 — Open Figma Web App (Browser)</h2>
+<div class="step">
+  <div class="step-head"><div class="num">0</div><h3>Open the design in Chrome</h3></div>
+  <ol>
+    <li>Open Chrome → Go to <code>https://www.figma.com/design/VmU4CMyskr5EBI0lzhSgs9/TEKNIC-EUCHNER---INTERVIEW?node-id=1-152</code></li>
+    <li>Log in → Click <b>Duplicate to drafts</b> (top bar) — you now have an editable copy.</li>
+    <li>Press <span class="kbd">Shift + D</span> → Toggle <b>Design ↔ Dev Mode</b>. Dev Mode is where you copy CSS.</li>
+    <li>Enable helpers: <code>View → Rulers</code> (<span class="kbd">Shift+R</span>) and <code>View → Pixel Grid</code> — so you can read X,Y like <code>80, 480</code>.</li>
+  </ol>
+  <div class="callout"><b>Interview line:</b> “I open the link in Figma web app, duplicate to drafts, switch to Dev Mode — that’s where I get pixel-perfect code.”</div>
+  <p class="muted">File we used locally: <code>C:\Users\Qsp\Downloads\TEKNIC EUCHNER - INTERVIEW.fig.zip</code> → same as web app.</p>
+</div>
+
+<h2 id="s1">1 — Extract Colors (Web App)</h2>
+<div class="step">
+  <div class="step-head"><div class="num red">1</div><h3>Click any layer → Right panel → Copy HEX</h3></div>
+  <div class="grid2">
+    <div class="card">
+      <h4>Do in Figma Web App (manual, clean)</h4>
+      <ol>
+        <li>Select header <b>Frame 4</b> (top bar) → Right panel → <b>Fill</b> → Click color swatch → See <code>#151B20</code> → Click copy icon.</li>
+        <li>Select red button → Fill → <code>#E60000</code></li>
+        <li>Select hero title → Fill → <code>#FFFFFF</code></li>
+        <li>Select muted text (1:179) → Fill → <code>#5C5C5C</code></li>
+        <li><b>Dev Mode shortcut:</b> Select layer → Right <b>Inspect → Colors</b> → Shows all HEX at once → Copy.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Result → CSS variables</h4>
+      <table>
+        <tr><th>Swatch</th><th>Hex</th><th>Use</th></tr>
+        <tr><td><span class="dot" style="background:#E60000"></span>Primary</td><td><code>#E60000</code></td><td>.btn--red</td></tr>
+        <tr><td><span class="dot" style="background:#151B20"></span>Header</td><td><code>#151B20</code></td><td>.header</td></tr>
+        <tr><td><span class="dot" style="background:#0F0F0F"></span>Dark</td><td><code>#0F0F0F</code></td><td>.experience</td></tr>
+        <tr><td><span class="dot" style="background:#5C5C5C"></span>Muted</td><td><code>#5C5C5C</code></td><td>p, .eyebrow</td></tr>
+        <tr><td><span class="dot" style="background:#CAD1D9"></span>Light</td><td><code>#CAD1D9</code></td><td>nav, .stat p</td></tr>
+      </table>
+      <pre>:root{
+  --red:#E60000;
+  --dark:#0F0F0F;
+  --dark2:#151B20;
+}</pre>
+    </div>
+  </div>
+</div>
+
+<h2 id="s2">2 — Extract Fonts (Web App)</h2>
+<div class="step">
+  <div class="step-head"><div class="num red">2</div><h3>Select text → Typography panel → Copy</h3></div>
+  <div class="grid2">
+    <div class="card">
+      <h4>Do in Figma Web App</h4>
+      <ol>
+        <li>Select <b>“Precision That Keeps…”</b> (hero H1) → Right panel → <b>Typography</b>:
+          <br>Family <code>Space Grotesk</code> • Style <code>Bold</code> • Size <code>50.81px</code> • Line <code>58px</code>
+        </li>
+        <li>Select subtitle → <code>Space Grotesk Medium 20.16px / 26px</code></li>
+        <li>Select eyebrow <code>INTRODUCTION</code> → <code>IBM Plex Mono Medium 16px</code> uppercase</li>
+        <li>Select body <code>Since 1989...</code> → <code>IBM Plex Sans Regular 16px / 26px</code></li>
+        <li><b>Dev Mode:</b> Select text → <b>Inspect → Typography</b> → Copy CSS block.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Result → HTML + CSS</h4>
+      <pre>&lt;!-- HTML head --&gt;
+&lt;link href="https://fonts.googleapis.com
+/css2?family=Space+Grotesk:wght@500;700
+&family=IBM+Plex+Mono:wght@500
+&family=IBM+Plex+Sans&display=swap"
+rel="stylesheet"&gt;</pre>
+      <pre>/* CSS */
+.hero__title{
+  font-family:'Space Grotesk';
+  font-weight:700;
+  font-size:50.81px;
+  line-height:58px;
+}</pre>
+    </div>
+  </div>
+</div>
+
+<h2 id="s3">3 — Extract Images / Assets (Web App)</h2>
+<div class="step">
+  <div class="step-head"><div class="num red">3</div><h3>Select image → Export → PNG</h3></div>
+  <div class="grid2">
+    <div class="card">
+      <h4>Do in Figma Web App (no plugin)</h4>
+      <ol>
+        <li>Select product image (e.g., Inductive switch) → Right panel bottom → <b>Export → +</b> → Choose <code>PNG 1x, 2x</code> → Click <b>Export</b>.</li>
+        <li>For all images: <code>File → Export → Export all</code> → Figma downloads 44 PNGs.</li>
+        <li>Alternative: <b>Slice Tool (S)</b> → Draw box over area → Export slice.</li>
+        <li>Or right-click → <b>Copy/Paste as → Copy as PNG</b>.</li>
+      </ol>
+    </div>
+    <div class="card">
+      <h4>Where we put them (clean)</h4>
+      <pre>assets/
+└─ images/
+   ├─ 6afd91...png (Inductive)
+   ├─ 96dd29...png (Single Limit)
+   ├─ 696aeb...png (Quality)
+   └─ 876568...png (Logo)</pre>
+      <pre>&lt;img src="assets/images/6afd91...png"
+ alt="Inductive Proximity Switches"
+ loading="lazy"&gt;</pre>
+      <p class="muted">We renamed hash files to <code>.png</code> from <code>.fig.zip → images/</code> (44 files).</p>
+    </div>
+  </div>
+  <div class="callout"><b>Student tip:</b> In interview say: “I select the image layer, go to Export on right, choose PNG 1x/2x, export — that keeps it pixel-perfect. For bulk, File → Export all.”</div>
+</div>
+
+<h2 id="s4">4 — Extract Videos (Web App)</h2>
+<div class="step">
+  <div class="step-head"><div class="num red">4</div><h3>Video is special — use download or .fig.zip</h3></div>
+  <ol>
+    <li>Select hero background <b>“Inside Teknic…” 1:154</b> → Right panel → Fill shows <b>Video thumbnail</b> (no Export button) — Figma web app doesn’t allow direct video export.</li>
+    <li><b>Option A (web app):</b> Ask designer for source MP4 or use plugin <code>Video Export</code> → Download.</li>
+    <li><b>Option B (we used, clean):</b> Unzip <code>.fig.zip → videos/851ad0bf...</code> (28 MB) → Copy to <code>assets/hero.mp4</code>:
+      <pre>Copy-Item "videos/851ad0bf..." -Destination "assets/hero.mp4"</pre>
+    </li>
+    <li>Use in HTML:
+      <pre>&lt;video class="hero__media" autoplay muted loop playsinline
+ poster="assets/images/ff21ce...png"&gt;
+  &lt;source src="assets/hero.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</pre>
+    </li>
+  </ol>
+  <div class="callout"><b>Interview line:</b> “Videos in Figma are embedded — I get the MP4 from the .fig.zip videos folder or request the original file, then use &lt;video autoplay muted loop playsinline&gt;.”</div>
+</div>
+
+<h2 id="s5">5 — Copy CSS from Figma Web App (Dev Mode)</h2>
+<div class="step">
+  <div class="step-head"><div class="num">5</div><h3>Dev Mode → Inspect → Copy CSS</h3></div>
+  <ol>
+    <li>Toggle <b>Dev Mode</b> (Shift+D) → Select any layer (e.g., Header <code>1280×60 at y=30</code>) → Right panel → <b>CSS</b> tab → Shows:
+      <pre>position: fixed;
+top: 30px;
+left: 50%;
+width: 1280px;
+height: 60px;
+background: #151B20;
+border-radius: 6px;</pre>
+    </li>
+    <li>Select hero Frame 8 at <code>X 80 Y 480 W 587 H 264</code> → CSS shows exact <code>left:80px; top:480px; width:587px</code> → Paste to your CSS.</li>
+    <li>Use <b>Alt + Hover</b> between layers to see red gap (e.g., 30px between title and subtitle).</li>
+  </ol>
+  <p class="muted">This is how we verified pixel-perfect: hero left <code>80</code> + <code>587</code> + gap <code>397</code> + right <code>296</code> = <code>1280</code> centered.</p>
+</div>
+
+<h2 id="s6">6 — Create HTML (Step by Step, Clean)</h2>
+<div class="step">
+  <h3>Build page section by section (semantic tags)</h3>
+  <pre>&lt;!-- 1. Header (Frame 4 1280x60) --&gt;
+&lt;header class="header"&gt;
+  &lt;a class="header__logo"&gt;&lt;img src="assets/images/876568...png"&gt;&lt;/a&gt;
+  &lt;nav class="header__nav"&gt;&lt;a href="#home"&gt;HOME&lt;/a&gt; ... &lt;/nav&gt;
+  &lt;a class="btn btn--red"&gt;Talk to an Expert&lt;/a&gt;
+&lt;/header&gt;
+
+&lt;!-- 2. Hero (Frame 9 1440x810) at (80,480) --&gt;
+&lt;section class="hero" id="home"&gt;
+  &lt;video class="hero__media"&gt;&lt;/video&gt;
+  &lt;div class="hero__content"&gt; &lt;!-- 1280 centered --&gt;
+    &lt;div class="hero__left"&gt;&lt;h1&gt;Precision...&lt;/h1&gt;&lt;/div&gt; &lt;!-- 587px --&gt;
+    &lt;div class="hero__right"&gt;&lt;div class="hero__line"&gt;&lt;/div&gt;&lt;p&gt;For over...&lt;/p&gt;&lt;/div&gt; &lt;!-- 296px --&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;!-- 3. Intro, Experience, Products (6 cards), Why, Machines, German, Quality, CTA, Footer --&gt;
+&lt;section class="products" id="products"&gt;
+  &lt;article class="product-card"&gt;
+    &lt;div class="product-card__image"&gt;&lt;img src="assets/images/6afd91...png"&gt;&lt;/div&gt;
+    &lt;h3&gt;Inductive...&lt;/h3&gt;
+    &lt;a class="btn btn--red btn--full"&gt;Explore&lt;/a&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</pre>
+  <ul>
+    <li>Use <code>id="home/about/products"</code> for nav anchors</li>
+    <li>Use <code>alt</code>, <code>aria-label</code> for accessibility</li>
+    <li>Use <code>loading="lazy"</code> on images</li>
+  </ul>
+</div>
+
+<h2 id="s7">7 — Create CSS (Step by Step, Separate Files, Basic)</h2>
+<div class="step">
+  <div class="grid2">
+    <div class="card">
+      <h4>desktop.css — Desktop only (1440)</h4>
+      <pre>/* Basic, no advanced */
+.container{width:1280px;
+  max-width:90%; margin:0 auto}
+.header{position:fixed;
+  top:30px; left:50%;
+  transform:translateX(-50%);
+  width:1280px}
+.hero__content{position:absolute;
+  top:480px; left:50%;
+  transform:translateX(-50%);
+  width:1280px;
+  display:flex;
+  justify-content:space-between}
+.hero__left{width:587px}
+.hero__right{width:296px}</pre>
+      <p class="muted">If you want to <b>ignore responsive</b>, include only this file.</p>
+    </div>
+    <div class="card">
+      <h4>mobile.css — Mobile only</h4>
+      <pre>@media(max-width:720px){
+  .container{width:95%}
+  .header__nav{display:none}
+  .header__burger{display:block}
+  .hero__content{
+    position:relative;
+    top:auto; left:auto;
+    transform:none;
+    width:95%;
+    display:block}
+  .product-card{width:100%}
+}</pre>
+      <p class="muted">Remove this link to disable mobile.</p>
+    </div>
+  </div>
+  <pre>&lt;link rel="stylesheet" href="css/desktop.css"&gt; &lt;!-- desktop --&gt;
+&lt;link rel="stylesheet" href="css/mobile.css"&gt;  &lt;!-- mobile — delete to ignore --&gt;</pre>
+</div>
+
+<h2 id="s8">8 — Create JS (Step by Step, Basic)</h2>
+<div class="step">
+  <pre>// 1. Reveal on scroll — IntersectionObserver (basic)
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target)} })
+},{threshold:0.12});
+reveals.forEach(el=>io.observe(el));
+// CSS: .reveal{opacity:0} .is-visible{opacity:1}
+
+// 2. Header hide on scroll
+let lastY=0;
+window.addEventListener('scroll',()=>{
+  const y=scrollY;
+  if(y>400 && y>lastY) header.style.transform='translateX(-50%) translateY(-88px)';
+  else header.style.transform='translateX(-50%) translateY(0)';
+  lastY=y;
+});
+
+// 3. Smooth scroll with offset for fixed header
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){ e.preventDefault();
+      scrollTo({top:t.getBoundingClientRect().top+scrollY-72, behavior:'smooth'});
+    }
+  });
+});</pre>
+  <p class="muted">All use basic <code>querySelector</code>, <code>addEventListener</code>, <code>classList</code> — easy to explain in interview.</p>
+</div>
+
+<h2 id="s9">9 — Run & Verify</h2>
+<div class="step">
+  <ol>
+    <li><b>Double-click:</b> <code>C:\Users\Qsp\Desktop\html-js-task\index.html</code> → <code>file:///C:/...</code> (header stays centered due to <code>transform</code> fix)</li>
+    <li><b>Server:</b> <code>python -m http.server 8199 --directory C:\Users\Qsp\Desktop\html-js-task</code> → <code>http://localhost:8199</code></li>
+    <li><b>Verify pixel perfect:</b> Open Figma web app side-by-side → Compare <code>hero title 50.81px/58px at 80,480</code>, <code>header 1280×60 at y=30</code>, <code>gap 397px</code> → all match</li>
+    <li><b>Show interview:</b> Open <code>docs/index.html</code> + <code>docs/figma-extract.html</code> + this page to demonstrate extraction</li>
+  </ol>
+</div>
+
+<footer>
+  <p>Clean guide for students — Figma Web App (browser) → Assets/Colors/Fonts/Videos → HTML/CSS/JS</p>
+  <p style="margin-top:10px">
+    <a href="index.html" class="btn" style="background:#fff;color:#111">← Full Extraction Guide</a>
+    <a href="figma-extract.html" class="btn" style="background:#fff;color:#111;margin-left:8px">Figma Settings →</a>
+    <a href="../index.html" class="btn-primary btn" style="margin-left:8px">View Website →</a>
+  </p>
+  <p style="margin-top:12px;font-size:12px;color:#6B7280">Files: C:\Users\Qsp\Desktop\html-js-task\docs\clean-guide.html | Also: desktop.css + mobile.css + app.js with per-line comments</p>
+</footer>
+
+</div>
+</body>
+</html>

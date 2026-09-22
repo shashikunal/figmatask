@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Figma Settings & Extraction — Colors, Fonts, Images, Videos</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#F8F9FA;color:#1a1a1a;line-height:1.7}
+.wrap{max-width:960px;margin:0 auto;padding:32px 24px}
+header{background:#0F0F0F;color:#fff;padding:40px 24px;text-align:center}
+header h1{font-size:28px}
+header p{color:#CAD1D9;margin-top:8px}
+h2{font-size:22px;margin:36px 0 12px;padding-bottom:8px;border-bottom:2px solid #E60000}
+h3{font-size:17px;margin:20px 0 8px;color:#151B20}
+h4{font-size:15px;margin:14px 0 6px;color:#E60000}
+ul,ol{margin-left:22px;margin-bottom:12px}
+li{margin-bottom:6px;font-size:14px}
+pre{background:#0F0F0F;color:#e6e6e6;padding:14px;border-radius:8px;overflow:auto;font-size:13px;margin:10px 0}
+code{background:#eee;padding:2px 6px;border-radius:4px;font-size:13px}
+.step{background:#fff;border:1px solid #EAEAEA;border-radius:12px;padding:22px;margin:18px 0}
+.note{background:#FFF8E1;border-left:4px solid #E60000;padding:10px 14px;border-radius:6px;margin:10px 0;font-size:14px}
+table{width:100%;border-collapse:collapse;background:#fff;margin:10px 0}
+th,td{border:1px solid #ddd;padding:8px;font-size:14px;text-align:left}
+th{background:#151B20;color:#fff}
+.color{width:18px;height:18px;display:inline-block;border-radius:4px;border:1px solid #ddd;vertical-align:middle;margin-right:6px}
+footer{margin-top:40px;padding:20px;background:#151B20;color:#CAD1D9;text-align:center;border-radius:12px}
+a{color:#E60000}
+</style>
+</head>
+<body>
+<header>
+  <h1>Figma Settings & Extraction Guide</h1>
+  <p>How to get Colors, Fonts, Images, Videos from Figma — for interview demo</p>
+  <p style="margin-top:10px;font-size:13px;color:#888">File: TEKNIC EUCHNER - INTERVIEW.fig (1440×7592, 577 nodes) | 44 images + 1 video</p>
+</header>
+<div class="wrap">
+
+<h2>0. Open File & Basic Figma Settings</h2>
+<div class="step">
+  <h3>Open</h3>
+  <ol>
+    <li>Open <b>Figma Desktop App</b> (better than browser for export) → <code>Open → TEKNIC EUCHNER - INTERVIEW.fig</code> or drag <code>.fig</code> onto Figma window.</li>
+    <li>If you have link <code>https://www.figma.com/design/VmU4CMyskr5EBI0lzhSgs9/...</code> → Click <b>Duplicate to drafts</b> to get editable copy.</li>
+  </ol>
+  <h3>Settings to Enable (Top Menu)</h3>
+  <ul>
+    <li><b>View → Rulers</b> (Shift+R) → shows X,Y coordinates — needed to get <code>x=80, y=480</code> for hero.</li>
+    <li><b>View → Outline Stroke</b> → see actual bounds.</li>
+    <li><b>View → Pixel Grid</b> → ensures 1px lines are sharp.</li>
+    <li><b>File → Show in Figma → Preferences → Nudge amount 1px</b> → for measuring gaps.</li>
+  </ul>
+  <h3>Enable Dev Mode (for code)</h3>
+  <ol>
+    <li>Top bar toggle: <b>Design ↔ Dev Mode</b> (or press <code>Shift+D</code>)</li>
+    <li>Dev Mode shows <b>Inspect panel</b> on right: CSS, iOS, Android code for selected layer.</li>
+    <li>Set Code language to <b>CSS</b> (click CSS tab) → copy exact <code>background: #E60000; font-size: 50.81px</code></li>
+  </ol>
+  <div class="note"><b>Interview tip:</b> Say “I switch to Dev Mode, select layer, copy CSS — that gives pixel-perfect colors/fonts/sizes.”</div>
+</div>
+
+<h2>1. Extract Colors (3 ways)</h2>
+<div class="step">
+  <h3>Method A — Select any Frame/Text → Right Panel → Fill</h3>
+  <ol>
+    <li>Select header <code>Frame 4 (1:621)</code> → Right panel → <b>Fill</b> → see solid color → Click color swatch → Copy <code>#151B20</code> (header) or <code>#E60000</code> (button).</li>
+    <li>Select hero title <code>1:157</code> → <b>Fill</b> → <code>#FFFFFF</code> white.</li>
+    <li>Select muted text <code>1:179</code> → Fill → <code>#5C5C5C</code> gray.</li>
+  </ol>
+  <h3>Method B — Dev Mode Inspect</h3>
+  <ol>
+    <li>Dev Mode → Click layer → Right <b>Inspect → Colors</b> → shows HEX + opacity → Click copy icon.</li>
+    <li>Shows all fills on page: <code>#E60000, #0F0F0F, #151B20, #F6F6F6</code> etc.</li>
+  </ol>
+  <h3>Method C — Styles Panel (if styles created)</h3>
+  <ol>
+    <li>Left sidebar → <b>Assets → Colors</b> → Lists style names like <code>Primary #E60000</code>, <code>Secondary #0F0F0F</code> → Right-click Copy.</li>
+  </ol>
+  <table>
+    <tr><th>What</th><th>Figma Layer</th><th>Hex (copy)</th><th>CSS Use</th></tr>
+    <tr><td><span class="color" style="background:#E60000"></span>Primary</td><td>Any .btn--red</td><td><code>#E60000</code></td><td><code>background:#E60000</code></td></tr>
+    <tr><td><span class="color" style="background:#151B20"></span>Header</td><td>Frame 4</td><td><code>#151B20</code></td><td><code>background:#151B20</code></td></tr>
+    <tr><td><span class="color" style="background:#0F0F0F"></span>Dark</td><td>Experience 1:183</td><td><code>#0F0F0F</code></td><td><code>background:#0F0F0F</code></td></tr>
+    <tr><td><span class="color" style="background:#5C5C5C"></span>Muted</td><td>Text 1:179</td><td><code>#5C5C5C</code></td><td><code>color:#5C5C5C</code></td></tr>
+    <tr><td><span class="color" style="background:#CAD1D9"></span>Light</td><td>Nav link</td><td><code>#CAD1D9</code></td><td><code>color:#CAD1D9</code></td></tr>
+  </table>
+  <h4>How we did via code (automated):</h4>
+  <pre>for (n of nodeChanges) {
+  for (p of n.fillPaints || [])
+    if (p.type==='SOLID' && p.visible)
+      hex = `#${
+        [p.color.r,p.color.g,p.color.b]
+        .map(v=>Math.round(v*255).toString(16).padStart(2,'0')).join('')
+      }`.toUpperCase()
+  // p.color.r 0.1176 → 30 → 1E → #1E1E1E
+}</pre>
+</div>
+
+<h2>2. Extract Fonts (Dev Mode)</h2>
+<div class="step">
+  <h3>Manual in Figma</h3>
+  <ol>
+    <li>Select text <code>Precision That Keeps... 1:157</code> → Right panel → <b>Typography</b> section shows:
+      <ul>
+        <li>Family: <code>Space Grotesk</code></li>
+        <li>Style: <code>Bold</code></li>
+        <li>Size: <code>50.81px</code></li>
+        <li>Line Height: <code>58px</code></li>
+        <li>Letter Spacing: <code>-0.02em</code></li>
+      </ul>
+    </li>
+    <li>Click font name → Shows <b>Details</b> → Copy.</li>
+    <li>Dev Mode → Select text → <b>Inspect → Typography</b> → Copy CSS:
+      <pre>font-family: 'Space Grotesk';
+font-weight: 700;
+font-size: 50.81px;
+line-height: 58px;
+letter-spacing: -0.02em;</pre>
+    </li>
+  </ol>
+  <table>
+    <tr><th>Figma Text</th><th>Family</th><th>Style</th><th>Size / Line</th><th>CSS</th></tr>
+    <tr><td>H1 Hero 1:157</td><td>Space Grotesk</td><td>Bold</td><td>50.81 / 58</td><td><code>font:700 50.81px/58px Space Grotesk</code></td></tr>
+    <tr><td>Sub 1:158</td><td>Space Grotesk</td><td>Medium</td><td>20.16 / 26</td><td><code>font:500 20.16px Space Grotesk</code></td></tr>
+    <tr><td>Eyebrow</td><td>IBM Plex Mono</td><td>Medium</td><td>16 / 100%</td><td><code>font:500 16px IBM Plex Mono uppercase</code></td></tr>
+    <tr><td>Body 1:179</td><td>IBM Plex Sans</td><td>Regular</td><td>16 / 26</td><td><code>font:400 16px IBM Plex Sans</code></td></tr>
+  </table>
+  <h4>Code automated:</h4>
+  <pre>n.fontName // {family:"Space Grotesk", style:"Bold", postscript:"SpaceGrotesk-Bold"}
+n.fontSize // 50.810001373291016
+// → Google Fonts import in HTML
+&lt;link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans&display=swap"&gt;</pre>
+  <div class="note">Interview: “I check Figma right panel Typography, note family/weight/size/line-height, then add same to CSS and import via Google Fonts.”</div>
+</div>
+
+<h2>3. Extract Images (Export)</h2>
+<div class="step">
+  <h3>Method A — Select Image Layer → Export (Best)</h3>
+  <ol>
+    <li>Select product image <code>image 6afd91... at 1:689</code> (Inductive switch) → Right panel bottom → <b>Export → + → PNG 1x, 2x → Export ...</b> → Saves <code>image.png</code>.</li>
+    <li>For multiple: <b>File → Export → Export all images</b> → Figma exports 44 images to zip.</li>
+    <li><b>Slice Tool (S):</b> Draw slice over area → Export slice as PNG.</li>
+  </ol>
+  <h3>Method B — Right-click Copy</h3>
+  <ol>
+    <li>Right-click image → <b>Copy/Paste as → Copy as PNG</b> → Paste in browser to download.</li>
+    <li>Or <b>Plugins → Image Export</b>.</li>
+  </ol>
+  <h3>Method C — From .fig.zip (we did)</h3>
+  <ol>
+    <li>Unzip <code>TEKNIC EUCHNER - INTERVIEW.fig.zip</code> → <code>images/</code> folder has 44 files named by hash <code>6afd91a24685d3ba...</code> (no extension).</li>
+    <li>Rename <code>6afd91a2 → 6afd91a2.png</code> → copy to <code>assets/images/</code>.</li>
+    <li>Map hash to Figma: In decoded JSON <code>fillPaints[IMAGE].image.hash bytes → hex → filename</code>.</li>
+  </ol>
+  <pre># Manual copy
+Copy-Item "C:\...\teknic_fig\images\*" -Destination "assets\images\" -Force
+# Rename
+Get-ChildItem images | ForEach-Object { Copy-Item $_.FullName "$($_.FullName).png" }</pre>
+  <table>
+    <tr><th>Product</th><th>Figma Hash</th><th>File</th></tr>
+    <tr><td>Inductive</td><td>6afd91a24685...</td><td>assets/images/6afd91...png</td></tr>
+    <tr><td>Single Limit</td><td>96dd29c1...</td><td>assets/images/96dd29...png</td></tr>
+    <tr><td>Quality</td><td>696aeb71...</td><td>assets/images/696aeb...png</td></tr>
+    <tr><td>Logo</td><td>87656805...</td><td>assets/images/876568...png</td></tr>
+  </table>
+</div>
+
+<h2>4. Extract Videos</h2>
+<div class="step">
+  <h3>Figma Video is special — not exportable via right panel</h3>
+  <ol>
+    <li>In Figma, video appears as <b>Rectangle with Fill → Video</b> or <b>Prototype → Video</b>. Select hero bg <code>1:154 Inside Teknic...</code> → Right panel → Fill shows <b>Video thumbnail</b> → No Export button.</li>
+    <li><b>Workaround 1:</b> Right-click layer → <b>Copy link</b> → Open in browser → Download.</li>
+    <li><b>Workaround 2 (we did):</b> From <code>.fig.zip → videos/851ad0bf1f180ea4b...</code> (28 MB) → Copy to <code>assets/hero.mp4</code> → Use in HTML:
+      <pre>&lt;video autoplay muted loop playsinline poster="ff21ce...png"&gt;
+  &lt;source src="assets/hero.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</pre>
+    </li>
+    <li><b>Workaround 3:</b> <b>Plugins → Video Export</b> or ask designer for original MP4.</li>
+  </ol>
+  <div class="note">Interview: “Videos in Figma are embedded; I get them from .fig.zip videos folder or request source MP4 from designer — then use &lt;video&gt; with autoplay muted loop playsinline.”</div>
+  <h4>Code automated:</h4>
+  <pre>imageNodes = changes.filter(c=>c.fillPaints?.some(p=>p.type==='IMAGE'))
+videoHash = "851ad0bf1f180ea4bcc14457609167d677def964" // from videos folder
+// Copy: videos/851ad... → assets/hero.mp4</pre>
+</div>
+
+<h2>5. Extract Spacing / Sizes (for pixel perfect)</h2>
+<div class="step">
+  <ol>
+    <li>Select Frame <code>1:153 Hero 1440x810 at (0,0)</code> → Top shows <b>W 1440 H 810 X 0 Y 0</b> — copy to CSS <code>width:1440px; height:810px</code> or <code>height:810px; position:absolute top:-31px left:-55px size 1550x872</code> for video.</li>
+    <li>Select <code>Frame 8 at (80,480) 587x264</code> → X 80 Y 480 → CSS <code>left:80px; top:480px; width:587px</code> → In code we center via <code>left:50%; transform:translateX(-50%)</code> with <code>587+296+397=1280</code>.</li>
+    <li>Use <b>Alt + Hover</b> between layers to see red gap (e.g., 30px between title and subtitle, 20px between buttons).</li>
+    <li>Dev Mode → <b>Inspect → Layout</b> → Shows gap, padding, grid.</li>
+  </ol>
+  <pre>.hero__content{position:absolute; top:480px; left:50%; transform:translateX(-50%); width:1280px}
+.hero__left{width:587px} /* Frame 8 */
+.hero__right{width:296px} /* Frame 5 at 1064 → 80+587+397+296=1440 */</pre>
+</div>
+
+<h2>6. Quick Figma Settings Checklist (for interview)</h2>
+<table>
+  <tr><th>Setting</th><th>Where</th><th>Why</th></tr>
+  <tr><td>Dev Mode ON</td><td>Top toggle Shift+D</td><td>Copy CSS for colors/fonts/sizes</td></tr>
+  <tr><td>Rulers On</td><td>View → Rulers</td><td>Get X,Y positions (80,480)</td></tr>
+  <tr><td>Show Selection Bounds</td><td>View → Show Outlines</td><td>See exact frame sizes</td></tr>
+  <tr><td>Code = CSS</td><td>Dev Mode right panel</td><td>Copy background, font, size</td></tr>
+  <tr><td>Export 1x/2x</td><td>Right panel Export</td><td>Get PNG images</td></tr>
+  <tr><td>Save local copy</td><td>File → Save local copy (.fig)</td><td>Get zip with images/videos + canvas.fig for code decode</td></tr>
+</table>
+
+<footer>
+  <p><b>We did:</b> Manual Figma inspect (colors/fonts/sizes) + Automated decode via <code>@figit/fig-kiwi</code> for 577 nodes to verify pixel perfect.</p>
+  <p style="margin-top:8px"><a href="index.html" style="color:#fff; background:#E60000; padding:8px 16px; border-radius:6px; display:inline-block; text-decoration:none">← Back to Extraction Guide</a> <a href="../index.html" style="color:#fff; background:#151B20; padding:8px 16px; border-radius:6px; display:inline-block; text-decoration:none; margin-left:8px">→ View Website</a></p>
+  <p style="margin-top:12px; font-size:12px; color:#888">File: C:\Users\Qsp\Desktop\html-js-task\docs\figma-extract.html</p>
+</footer>
+</div>
+</body>
+</html>

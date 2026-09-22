@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teknic Euchner — Extraction Guide | HTML CSS JS Interview Doc</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family: 'Segoe UI', Arial, sans-serif; background:#F8F9FA; color:#1a1a1a; line-height:1.7}
+  .wrap{max-width:960px; margin:0 auto; padding:32px 24px}
+  header{background:#0F0F0F; color:#fff; padding:40px 24px; text-align:center}
+  header h1{font-size:32px; letter-spacing:-0.5px}
+  header p{color:#CAD1D9; margin-top:8px}
+  h2{font-size:24px; margin:40px 0 12px; padding-bottom:8px; border-bottom:2px solid #E60000; color:#0F0F0F}
+  h3{font-size:18px; margin:24px 0 8px; color:#151B20}
+  p, li{font-size:15px}
+  ul,ol{margin-left:20px; margin-bottom:16px}
+  li{margin-bottom:6px}
+  .step{background:#fff; border:1px solid #EAEAEA; border-radius:12px; padding:24px; margin:20px 0; box-shadow:0 2px 12px rgba(0,0,0,0.04)}
+  .step-num{display:inline-block; background:#E60000; color:#fff; width:32px; height:32px; text-align:center; line-height:32px; border-radius:50%; font-weight:700; margin-right:10px}
+  code{background:#F0F0F0; padding:2px 6px; border-radius:4px; font-size:13px}
+  pre{background:#0F0F0F; color:#e6e6e6; padding:16px; border-radius:8px; overflow:auto; font-size:13px; line-height:1.5; margin:12px 0}
+  pre b{color:#F79090}
+  .tag{display:inline-block; background:#151B20; color:#fff; padding:4px 10px; border-radius:20px; font-size:12px; margin:4px 4px 0 0}
+  .grid{display:grid; grid-template-columns:1fr 1fr; gap:16px}
+  table{width:100%; border-collapse:collapse; margin:12px 0; background:#fff}
+  th,td{border:1px solid #ddd; padding:10px; text-align:left; font-size:14px}
+  th{background:#151B20; color:#fff}
+  .color{width:20px; height:20px; display:inline-block; vertical-align:middle; border-radius:4px; border:1px solid #ddd; margin-right:6px}
+  .note{background:#FFF8E1; border-left:4px solid #E60000; padding:12px 16px; border-radius:6px; margin:12px 0}
+  a{color:#E60000; text-decoration:none} a:hover{text-decoration:underline}
+  footer{margin-top:48px; padding:24px; background:#151B20; color:#CAD1D9; text-align:center; border-radius:12px}
+  @media(max-width:640px){.grid{grid-template-columns:1fr} header h1{font-size:24px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>Teknic Euchner — Figma to Code</h1>
+  <p>Step-by-step extraction guide for interview: how we got colors, fonts, assets, videos & mapped to HTML / CSS / JS</p>
+  <p style="margin-top:12px"><span class="tag">Figma 1440×7592</span><span class="tag">577 Nodes</span><span class="tag">Pixel Perfect</span><span class="tag">file:/// ready</span></p>
+</header>
+
+<div class="wrap">
+
+<h2>0. Project Structure (where files live)</h2>
+<pre>C:\Users\Qsp\Desktop\html-js-task\
+├─ index.html              ← Main website (pixel perfect)
+├─ css\
+│  ├─ desktop.css          ← Desktop only (1440px, basic flex)
+│  ├─ mobile.css           ← Mobile only (@media 720px)
+│  └─ style.css            ← Combined (desktop+mobile in one file)
+├─ js\app.js               ← Animations (reveal, parallax, header)
+├─ assets\
+│  ├─ hero.mp4             ← Figma video at -55,-31
+│  └─ images\44 PNG        ← All Figma images by hash
+└─ docs\index.html         ← This guide (you are here)</pre>
+<p><b>Run website:</b> Double click <code>index.html</code> → <code>file:///C:/Users/Qsp/Desktop/html-js-task/index.html</code> or <code>python -m http.server 8199 --directory C:\Users\Qsp\Desktop\html-js-task</code> → <code>http://localhost:8199</code></p>
+
+<h2>1. How we got the Figma file</h2>
+<div class="step">
+  <h3><span class="step-num">1</span> Download .fig.zip</h3>
+  <p>Figma → <b>File → Save local copy (.fig)</b> → You get <code>TEKNIC EUCHNER - INTERVIEW.fig.zip</code> at <code>C:\Users\Qsp\Downloads\</code></p>
+  <pre>TEKNIC EUCHNER - INTERVIEW.fig.zip
+├─ canvas.fig   (222,714 bytes, binary fig-kiwi)
+├─ meta.json    (thumbnail 76×400, 1440×7592)
+├─ thumbnail.png
+├─ images\ (44 files, each named by hash like 6afd91a2...)
+└─ videos\851ad0bf... (28 MB hero video)</pre>
+  <div class="note">Interview answer: <b>"We can't fetch via Figma link (login wall). We asked for .fig export — that's the source of truth."</b></div>
+</div>
+
+<h2>2. Unzip & Inspect (no code)</h2>
+<div class="step">
+  <h3><span class="step-num">2</span> Expand-Archive & check</h3>
+  <pre>Expand-Archive -LiteralPath "C:\Users\Qsp\Downloads\TEKNIC EUCHNER - INTERVIEW.fig.zip" `
+  -DestinationPath "C:\Users\Qsp\AppData\Local\Temp\opencode\teknic_fig" -Force
+
+Get-Content meta.json
+# {"background_color":{"r":0.1176...},"thumbnail_size":{"width":76,"height":400},
+#  "render_coordinates":{"width":1440,"height":7592}}</pre>
+  <p>Images are already extracted as PNGs — just rename <code>6afd91a2 → 6afd91a2.png</code> and copy to <code>assets/images</code>. Video is 28 MB — copy to <code>assets/hero.mp4</code>.</p>
+</div>
+
+<h2>3. Decode canvas.fig (fig-kiwi binary)</h2>
+<div class="step">
+  <h3><span class="step-num">3</span> Why not zip? Header is <code>fig-kiwi</code></h3>
+  <pre>hex: 66 69 67 2d 6b 69 77 69 6a  → "fig-kiwij"
+BadZipFile: File is not a zip file → it's Kiwi schema binary (protobuf)</pre>
+  <h3><span class="step-num">4</span> Install decoder <code>@figit/fig-kiwi</code></h3>
+  <pre>npm init -y
+npm install @figit/fig-kiwi --save  # decodes fig-kiwi to JSON</pre>
+  <h3><span class="step-num">5</span> Decode to JSON</h3>
+<pre>import { decodeFigmaData } from '@figit/fig-kiwi/dist/index.mjs';
+import fs from 'fs';
+const data = fs.readFileSync('C:/.../canvas.fig'); // 222KB
+const out = decodeFigmaData(data);
+console.log(out.message.type); // "NODE_CHANGES"
+console.log(out.message.nodeChanges.length); // 577 nodes
+// Each node: guid, type, name, size, transform, fills, fontName, textData</pre>
+  <p>We saved full tree to <code>C:\Users\Qsp\AppData\Local\Temp\opencode\tree.json</code> — every Frame 1:153 at (0,0) 1440×810, etc.</p>
+</div>
+
+<h2>4. Extract Colors, Fonts, Assets, Videos</h2>
+<div class="step">
+  <h3><span class="step-num">6</span> Colors (from <code>fillPaints</code>)</h3>
+<pre>for (n of changes) {
+  for (p of n.fillPaints || []) if (p.type==='SOLID')
+    hex = [p.color.r,p.color.g,p.color.b].map(v=>Math.round(v*255).toString(16).padStart(2,'0')).join('')
+}</pre>
+  <table>
+    <tr><th>Hex</th><th>Figma Token</th><th>Used In</th></tr>
+    <tr><td><span class="color" style="background:#E60000"></span>#E60000</td><td>Primary red</td><td>All .btn--red</td></tr>
+    <tr><td><span class="color" style="background:#0F0F0F"></span>#0F0F0F</td><td>Dark section</td><td>.experience, .machines, .cta-find</td></tr>
+    <tr><td><span class="color" style="background:#151B20"></span>#151B20</td><td>Header/Footer</td><td>.header, .footer</td></tr>
+    <tr><td><span class="color" style="background:#121517"></span>#121517</td><td>Card</td><td>.stat, .product-card</td></tr>
+    <tr><td><span class="color" style="background:#5C5C5C"></span>#5C5C5C</td><td>Muted text</td><td>.eyebrow, .intro__text</td></tr>
+    <tr><td><span class="color" style="background:#CAD1D9"></span>#CAD1D9</td><td>Light gray</td><td>.nav__link, .stat p</td></tr>
+    <tr><td><span class="color" style="background:#FFFFFF"></span>#FFFFFF</td><td>White</td><td>Hero text, cards</td></tr>
+    <tr><td><span class="color" style="background:#F6F6F6"></span>#F6F6F6</td><td>Wild Sand</td><td>Page bg</td></tr>
+  </table>
+  <h3><span class="step-num">7</span> Fonts (from <code>fontName</code>)</h3>
+<pre>{
+  family: "Space Grotesk", style: "Bold",  size: 50.81 // H1 at 1:157
+  family: "Space Grotesk", style: "Medium",size: 20.16 // Sub at 1:158
+  family: "IBM Plex Mono", style: "Medium",size: 16    // Eyebrow/labels
+  family: "IBM Plex Sans", style: "Regular",size:16   // Body
+}</pre>
+  <p>Import in HTML:</p>
+  <pre>&lt;link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans&display=swap" rel="stylesheet"&gt;</pre>
+  <h3><span class="step-num">8</span> Assets & Videos (from <code>fillPaints type IMAGE + blobs</code>)</h3>
+  <pre>imageNodes = changes.filter(c=>c.fillPaints?.some(p=>p.type==='IMAGE'))
+// hash bytes → hex filename: e.g. [106,253,145,...] → "6afd91a24685d3ba..."
+// File: assets/images/6afd91a24685d3ba110d216b40d7ef3fc0d758ab.png (Inductive)</pre>
+  <table>
+    <tr><th>Figma Hash</th><th>File</th><th>Mapped To</th></tr>
+    <tr><td>87656805...</td><td>876568...png</td><td>Logo header</td></tr>
+    <tr><td>6afd91a2...</td><td>6afd91...png</td><td>Inductive Proximity</td></tr>
+    <tr><td>96dd29c1...</td><td>96dd29...png</td><td>Single Limit</td></tr>
+    <tr><td>e356bfbb...</td><td>e356...png</td><td>Precision Limit</td></tr>
+    <tr><td>bde1c864...</td><td>bde1...png</td><td>Photoelectric</td></tr>
+    <tr><td>3888b3bc...</td><td>3888...png</td><td>NK Limit</td></tr>
+    <tr><td>3454bf79...</td><td>3454...png</td><td>Cable Connectors</td></tr>
+    <tr><td>696aeb71...</td><td>696aeb...png</td><td>Quality workers</td></tr>
+    <tr><td colspan="2">videos/851ad0bf... (28 MB)</td><td>assets/hero.mp4</td></tr>
+  </table>
+</div>
+
+<h2>5. Audit Pixel Perfect (was hero not centered)</h2>
+<div class="step">
+  <h3><span class="step-num">9</span> Compute absolute positions</h3>
+<pre>function getAbs(key){
+  let x=0,y=0, cur=map.get(key);
+  while(cur){ x+=cur.transform.m02||0; y+=cur.transform.m12||0;
+    cur=map.get(cur.parentIndex.guid) }
+  return {x,y}
+}
+dump('1:153') // Hero 1440x810 at (0,0)
+ // Frame 8 at (80,480) 587x264, Frame 5 at (1064,480) 296x119
+ // Gap = 1064-(80+587)=397 → 1280=587+397+296 centered (80 gutters)
+</pre>
+  <p><b>Bug found:</b> Initial hero used <code>padding-top:80 + flex:center + hero__bottom</code> → left not 80, claim not 1064, y not 480.</p>
+  <p><b>Fix:</b> <code>.hero__content{position:absolute; top:480px; left:50%; transform:translateX(-50%); width:1280px}</code> with <code>.hero__left 587px + .hero__right 296px + justify-content:space-between</code> → pixel perfect.</p>
+  <p><b>Header fix:</b> <code>margin-left:-640</code> → <code>left:50%; transform:translateX(-50%); max-width:calc(100% -32px)</code> to prevent left shift on <code>file://</code> narrow window.</p>
+</div>
+
+<h2>6. Map Figma → HTML (semantic)</h2>
+<div class="step">
+  <p>Every Figma <code>FRAME</code> → <code>&lt;section&gt;</code>, <code>TEXT</code> → <code>&lt;h1&gt;/&lt;p&gt;</code>, <code>INSTANCE Btn</code> → <code>&lt;a class="btn"&gt;</code>. BEM naming: <code>header__inner</code>, <code>product-card__image</code>.</p>
+<pre>&lt;!-- Figma Frame 9 hero 1440x810 at (0,0) --&gt;
+&lt;section class="hero" id="home"&gt;
+  &lt;video class="hero__media"&gt;  &lt;!-- Figma -55,-31 1550x872 --&gt;
+  &lt;div class="hero__content"&gt; &lt;!-- 1280 centered at y=480 --&gt;
+    &lt;div class="hero__left"&gt;  &lt;!-- 587px --&gt;
+      &lt;h1 class="hero__title"&gt;Precision That Keeps...&lt;/h1&gt; &lt;!-- 50.81px --&gt;
+    &lt;/div&gt;
+    &lt;div class="hero__right"&gt; &lt;!-- 296px at 1064 --&gt;
+      &lt;div class="hero__line"&gt;&lt;/div&gt; &lt;!-- 128px line --&gt;
+      &lt;p class="hero__claim"&gt;For over three decades...&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</pre>
+  <ul>
+    <li><code>id="home/about/products/dealers/contact"</code> for nav anchors</li>
+    <li><code>alt</code> on images, <code>aria-label</code> on nav/social for accessibility</li>
+    <li><code>loading="lazy"</code> on product images for performance</li>
+  </ul>
+</div>
+
+<h2>7. Map Figma → CSS (basic, separate files)</h2>
+<div class="step">
+  <h3>Why separate desktop + mobile?</h3>
+  <p>Interview wants <b>basic CSS</b> — we provide <code>desktop.css</code> (1440px, flex, no calc) and <code>mobile.css</code> (@media 720px). Remove mobile link to ignore responsive.</p>
+  <pre>&lt;link rel="stylesheet" href="css/desktop.css"&gt;  &lt;!-- desktop only --&gt;
+&lt;link rel="stylesheet" href="css/mobile.css"&gt;   &lt;!-- remove to ignore responsive --&gt;</pre>
+  <div class="grid">
+    <div>
+      <h3>Desktop (basic)</h3>
+      <pre>/* 1280 centered, 80 gutters */
+.container{width:1280px; max-width:90%; margin:0 auto}
+.header{position:fixed; top:30px; left:50%;
+  transform:translateX(-50%); width:1280px}
+.hero__content{position:absolute; top:480px;
+  left:50%; transform:translateX(-50%);
+  width:1280px; display:flex;
+  justify-content:space-between}
+.hero__left{width:587px}
+.hero__right{width:296px}</pre>
+    </div>
+    <div>
+      <h3>Mobile (override)</h3>
+      <pre>@media(max-width:720px){
+  .container{width:95%}
+  .header{top:12px}
+  .header__nav{display:none}
+  .header__burger{display:block}
+  .hero__content{position:relative;
+    top:auto; left:auto;
+    transform:none; width:95%;
+    display:block}
+  .product-card{width:100%}
+}</pre>
+    </div>
+  </div>
+  <p>Tokens: <code>:root</code> variables for colors, but also hard-coded hex for basic flavor. Every section commented with Figma sizes.</p>
+</div>
+
+<h2>8. Map Figma → JS (basic)</h2>
+<div class="step">
+  <h3><span class="step-num">10</span> Animations from Figma interactions</h3>
+<pre>// 1. Reveal on scroll — IntersectionObserver (modern, efficient)
+const reveals = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('is-visible'); io.unobserve(e.target)}
+  })
+},{threshold:0.12});
+reveals.forEach(el=>io.observe(el));
+// CSS: .reveal{opacity:0; transform:translateY(18px)} .is-visible{opacity:1}
+
+// 2. Header hide on scroll down
+let lastY=0;
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(y>400 && y>lastY) header.style.transform='translateX(-50%) translateY(-88px)';
+  else header.style.transform='translateX(-50%) translateY(0)';
+  lastY=y;
+},{passive:true});
+
+// 3. Smooth scroll with header offset
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const target=document.querySelector(a.getAttribute('href'));
+    if(target){ e.preventDefault();
+      window.scrollTo({top:target.getBoundingClientRect().top+scrollY-72, behavior:'smooth'});
+    }
+  });
+});
+
+// 4. Card 3D tilt on mousemove
+card.addEventListener('mousemove',e=>{
+  const r=card.getBoundingClientRect();
+  const x=(e.clientX-r.left)/r.width-0.5;
+  const y=(e.clientY-r.top)/r.height-0.5;
+  card.style.transform=`translateY(-4px) perspective(800px) rotateX(${-y*4}deg) rotateY(${x*6}deg)`;
+});</pre>
+  <p>All functions use <b>basic JS</b>: <code>querySelector</code>, <code>addEventListener</code>, <code>classList</code>, <code>style.transform</code>.</p>
+</div>
+
+<h2>9. How to Run & Verify</h2>
+<div class="step">
+  <ol>
+    <li><b>File double-click:</b> <code>C:\Users\Qsp\Desktop\html-js-task\index.html</code> → Chrome opens <code>file:///C:/...</code> — header stays centered (transform fix)</li>
+    <li><b>Local server (recommended):</b> <code>python -m http.server 8199 --directory C:\Users\Qsp\Desktop\html-js-task</code> → <code>http://localhost:8199</code> → <code>http://localhost:8199/docs/</code> (this guide)</li>
+    <li><b>Check pixel perfect:</b> Open Figma side-by-side, compare <code>hero title 50.81px</code>, <code>header 1280x60 at 30px</code>, <code>hero at 480,80</code> — all match decoded tree</li>
+    <li><b>Interview demo:</b> Show <code>tree.json</code> (577 nodes), <code>assets/images</code> (44 PNG), <code>hero.mp4</code>, then HTML/CSS/JS files with per-line comments</li>
+  </ol>
+</div>
+
+<h2>10. Interview Q&A Cheat Sheet</h2>
+<table>
+  <tr><th>Question</th><th>Answer</th></tr>
+  <tr><td>How extract colors?</td><td>Iterate <code>fillPaints type SOLID</code>, convert <code>r,g,b 0-1 → 0-255 hex</code>, see table #E60000 etc.</td></tr>
+  <tr><td>How extract fonts?</td><td>Read <code>fontName {family, style}</code> + <code>fontSize</code> — Space Grotesk 50.81, IBM Plex Mono 16, etc. Import via Google Fonts.</td></tr>
+  <tr><td>How extract images/videos?</td><td>Unzip .fig → <code>images/*</code> (hash as name) + <code>videos/851ad...</code> → copy to <code>assets/</code>, map hash bytes to hex filename.</td></tr>
+  <tr><td>Why separate CSS?</td><td>Interview wants basic — <code>desktop.css</code> for 1440, <code>mobile.css</code> only @media 720. Remove mobile to ignore responsive.</td></tr>
+  <tr><td>Why header was left?</td><td><code>margin-left:-640</code> fails when viewport &lt;1280. Fixed to <code>left:50%; transform:translateX(-50%); max-width:calc(100% -32px)</code>.</td></tr>
+  <tr><td>Why hero not centered?</td><td>Initially flex center + bottom bar, but Figma has <code>(80,480) 587</code> + <code>(1064,480) 296</code> gap 397. Fixed to <code>position:absolute top:480 left:50% width:1280 space-between</code>.</td></tr>
+  <tr><td>How start website?</td><td>Double click <code>index.html</code> or <code>python -m http.server 8199</code> → localhost:8199</td></tr>
+</table>
+
+<footer>
+  <p>Generated from Figma <b>TEKNIC EUCHNER - INTERVIEW.fig.zip</b> → 577 nodes decoded via <code>@figit/fig-kiwi</code> → HTML/CSS/JS pixel perfect</p>
+  <p style="margin-top:8px"><a href="../index.html" style="color:#fff; background:#E60000; padding:8px 16px; border-radius:6px; display:inline-block; text-decoration:none">← Back to Website</a></p>
+  <p style="margin-top:12px; font-size:12px; color:#888">File: C:\Users\Qsp\Desktop\html-js-task\docs\index.html | For interview preparation</p>
+</footer>
+
+</div>
+</body>
+</html>

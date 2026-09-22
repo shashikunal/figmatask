@@ -1,0 +1,359 @@
+<!DOCTYPE html> <!-- Document type declaration: tells browser this is HTML5 -->
+<html lang="en"> <!-- Root HTML element, lang helps screen readers and SEO -->
+<head> <!-- Head contains metadata, not visible on page -->
+  <meta charset="UTF-8"> <!-- Character encoding UTF-8 supports all languages/emojis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes site responsive on mobile: width=device-width, initial zoom 1 -->
+  <title>Teknic Euchner — Precision That Keeps Industry Moving</title> <!-- Title shown in browser tab and SEO -->
+  <!-- Preconnect: early DNS/TCP for Google Fonts to speed up font loading -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <!-- crossorigin needed for font CDN -->
+  <!-- Google Fonts import: Space Grotesk (headings) + IBM Plex Mono (labels/buttons) + IBM Plex Sans (body) exactly as Figma -->
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <!-- Link to external CSS files: separate desktop & mobile for interview (basic CSS) -->
+  <!-- DESKTOP CSS: contains all desktop styles (1440px). Use alone if you want to IGNORE responsive -->
+  <link rel="stylesheet" href="css/desktop.css">
+  <!-- MOBILE CSS: overrides for small screens. Remove this line if you want desktop-only (no responsive) -->
+  <link rel="stylesheet" href="css/mobile.css">
+  <!-- Original combined file kept for reference: css/style.css (has both in one file via @media) -->
+</head>
+<body> <!-- Body contains all visible content -->
+
+  <!-- ================= HEADER (Figma Frame 1:621, 1280x60 at y=30) ================= -->
+  <!-- header semantic tag for top navigation, id for JS scroll behavior -->
+  <header class="header" id="header">
+    <div class="header__inner"> <!-- BEM inner wrapper: flex container for logo + nav + actions -->
+      <!-- Logo: anchor wraps image so clicking goes home -->
+      <a href="#" class="header__logo">
+        <!-- Figma logo image hash 876568..., width/height attributes prevent layout shift before image loads -->
+        <img src="assets/images/876568050c49841d52f64a35fcbec36597932094.png" alt="Teknic Euchner" width="210" height="22">
+      </a>
+      <!-- nav semantic tag for primary navigation, aria-label for accessibility -->
+      <nav class="header__nav" aria-label="Primary">
+        <!-- Each anchor is a nav link; href="#id" enables smooth scroll to section -->
+        <a href="#home" class="nav__link is-active">HOME</a> <!-- is-active class shows current page -->
+        <a href="#about" class="nav__link">ABOUT</a>
+        <a href="#products" class="nav__link">PRODUCTS</a>
+        <a href="#dealers" class="nav__link">DEALERS</a>
+        <a href="#contact" class="nav__link">CONTACT</a>
+      </nav>
+      <!-- Right side actions: search + CTA button -->
+      <div class="header__actions">
+        <!-- icon button: SVG circle+line = search icon, aria-label for screen readers -->
+        <button class="icon-btn" aria-label="Search">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#CAD1D9" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+        </button>
+        <!-- CTA button: red filled, BEM modifiers btn--red -->
+        <a href="#contact" class="btn btn--red">Talk to an Expert</a>
+      </div>
+      <!-- Burger menu: hidden on desktop, shown on mobile via CSS media query -->
+      <button class="header__burger" aria-label="Menu">
+        <span></span><span></span><span></span> <!-- Three spans become hamburger lines via CSS -->
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= HERO (Figma Frame 1:153, 1440x810) ================= -->
+  <!-- section semantic tag for hero banner, id home for nav scrolling -->
+  <!-- AUDIT FIX: Figma audit shows hero content at abs y=480, x=80 (left 587px) and claim at x=1064 (right 296px) — both inside 1280 centered -->
+  <section class="hero" id="home">
+    <!-- video background: autoplay muted loop playsinline required for mobile autoplay; poster is fallback image while video loads -->
+    <!-- Figma: ROUNDED_RECTANGLE Inside... at -55,-31 size 1550x872 covers hero -->
+    <video class="hero__media" autoplay muted loop playsinline poster="assets/images/ff21ce140248821ed61748595f9c020469feee1b.png">
+      <source src="assets/hero.mp4" type="video/mp4"> <!-- Source file: Figma videos/851ad... -->
+    </video>
+    <div class="hero__overlay"></div> <!-- Overlay div: CSS gradient to darken video so white text is readable -->
+    <!-- hero__content: AUDITED — Figma Frame 8 at (80,480) 587x264 + Frame 5 at (1064,480) 296x119 inside 1440x810. Use 1280 centered (80 gutters) -->
+    <div class="hero__content">
+      <div class="hero__left"> <!-- Left column holds headline + subtitle + buttons — Figma 587px at x=80 -->
+        <!-- h1 main heading: Space Grotesk Bold 50.81px/58px at (80,480) size 587x94 -->
+        <h1 class="hero__title reveal">Precision That Keeps<br>Industry Moving.</h1> <!-- reveal class triggers scroll animation via JS -->
+        <!-- Subtitle: Space Grotesk Medium 20.16px at (80,604) size 587x40, 30px below title -->
+        <p class="hero__subtitle reveal d1">Engineered sensing, switching and control solutions for machines that demand reliability.</p> <!-- d1 = delay 0.1s for staggered animation -->
+        <!-- CTA group: Frame 7 at (80,684) 440x60 — two buttons 196 + 224 with 20 gap -->
+        <div class="hero__ctas reveal d2"> <!-- d2 = delay 0.2s -->
+          <a href="#products" class="btn btn--red btn--large"><span>Explore Our Products</span><span class="btn__plus">+</span></a> <!-- Large red button -->
+          <a href="#contact" class="btn btn--ghost"><span>GET IN TOUCH</span><span class="btn__plus">↗</span></a> <!-- Ghost = transparent with white border -->
+        </div>
+      </div>
+      <div class="hero__right"> <!-- Right column — Figma Frame 5 at (1064,480) 296x119, gap 397px from left -->
+        <div class="hero__line"></div> <!-- Line 1 at (1064,480) 128x1 -->
+        <p class="hero__claim">For over three decades, Teknic Euchner has been developing and manufacturing industrial control gear designed for precision, durability and dependable performance.</p> <!-- Text at (1064,504) 296x95, 24px below line -->
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTRO (Figma Frame 1:165, 1440x490) ================= -->
+  <section class="intro" id="about"> <!-- id about for nav link -->
+    <div class="container intro__grid"> <!-- intro__grid: CSS Grid 567px + 1fr columns exactly as Figma -->
+      <div class="intro__left"> <!-- Left column: eyebrow + title + button -->
+        <!-- Eyebrow label: small mono uppercase with box icon, from Figma INTRODUCTION -->
+        <div class="eyebrow"><span class="eyebrow__box"></span><span class="eyebrow__corners"></span> INTRODUCTION</div>
+        <!-- Section title: Space Grotesk Bold 40.33px -->
+        <h2 class="section-title reveal">Engineering You Can Rely On.<br>Experience You Can Trust.</h2>
+        <a href="#" class="btn btn--red btn--small">Discover Teknic Euchner</a> <!-- Small red button -->
+      </div>
+      <div class="intro__right"> <!-- Right column: line + 3 paragraphs -->
+        <div class="intro__line"></div> <!-- Decorative 128px line -->
+        <div class="intro__text"> <!-- Wrapper for vertical rhythm between paragraphs -->
+          <p>Since 1989, Teknic Euchner has been building its expertise around one simple principle: industrial components should perform reliably, every time they are called upon.</p>
+          <p>With the engineering know-how of Euchner Germany and decades of manufacturing experience in India, we develop control gear and sensing solutions for demanding industrial applications.</p>
+          <p>From machine positioning and object detection to switching and safety-related applications, our products are built to deliver consistent performance where it matters most.</p>
+        </div>
+        <!-- Text link with arrow: IBM Plex Mono uppercase, ↗ animates on hover via CSS -->
+        <a href="#" class="link-arrow">Discover More <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE (Figma Frame 1:183, 1440x571, bg #0F0F0F) ================= -->
+  <section class="experience"> <!-- Dark section, CSS bg #0F0F0F -->
+    <div class="container">
+      <div class="experience__top"> <!-- Grid 483px + 1fr for heading + note -->
+        <div class="experience__heading">
+          <div class="eyebrow eyebrow--dark"><span class="eyebrow__box"></span> EXPERIENCE</div> <!-- eyebrow--dark modifier makes white text -->
+          <h2 class="section-title section-title--light reveal">Decades of Engineering.<br>Built for Industry.</h2> <!-- --light makes white -->
+        </div>
+        <div class="experience__note"> <!-- Right note with line + disclaimer -->
+          <div class="intro__line intro__line--light"></div>
+          <p>Numbers and claims should be updated with the company's verified current figures before publishing.</p>
+        </div>
+      </div>
+      <!-- Stats grid: 4 cards, each 302x252 as per Figma -->
+      <div class="stats">
+        <!-- Each stat card: icon + h3 + p, reveal for scroll animation -->
+        <div class="stat reveal"><div class="stat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M12 8a3 3 0 100 6 3 3 0 000-6z"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001 1.51V11a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg></div><h3>35+ Years</h3><p>Of industrial manufacturing experience</p></div>
+        <div class="stat reveal d1"><div class="stat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h6"/></svg></div><h3>1989</h3><p>Year Teknic Euchner was established</p></div>
+        <div class="stat reveal d2"><div class="stat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><h3>Multiple Product Categories</h3><p>Solutions across sensing, switching and machine control</p></div>
+        <div class="stat reveal d3"><div class="stat__icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white"><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a6 6 0 0112 0v2"/><path d="M12 11v2M8 15h8"/></svg></div><h3>Pan-India Dealer Network</h3><p>Product access and support across India</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PRODUCTS (Figma Frame 1:245, 1440x1507) ================= -->
+  <section class="products" id="products">
+    <div class="container">
+      <!-- Header centered -->
+      <div class="products__header">
+        <h2 class="section-title section-title--center">The Right Control Gear for Every Application.</h2>
+        <div class="products__desc">
+          <div class="intro__line"></div> <!-- Line before paragraph as per Figma -->
+          <p>Industrial machines depend on components that can sense movement, detect position, control processes and respond when it matters. Teknic Euchner offers a focused range of industrial products engineered for reliable operation across demanding applications.</p>
+        </div>
+      </div>
+      <!-- Grid 3 columns, 6 cards -->
+      <div class="products__grid">
+        <!-- Article semantic tag for product card: better SEO/accessibility than div -->
+        <article class="product-card reveal"> <!-- reveal animates when scrolled into view -->
+          <div class="product-card__image"><img src="assets/images/6afd91a24685d3ba110d216b40d7ef3fc0d758ab.png" alt="Inductive Proximity Switches" loading="lazy"><span class="plus">+</span></div> <!-- loading=lazy defers offscreen images for performance -->
+          <div class="product-card__line"></div> <!-- 1px black line as per Figma -->
+          <h3>Inductive Proximity Switches</h3> <!-- Card title 18px Bold -->
+          <p class="product-card__lead">Reliable non-contact detection for automated machines.</p> <!-- Lead bold 14px -->
+          <p class="product-card__desc">Designed for control and positioning applications, our inductive proximity switches deliver precise object detection without physical contact.</p>
+          <a href="#" class="btn btn--red btn--full">Explore Proximity Switches</a> <!-- Full width red button -->
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-card__image"><img src="assets/images/96dd29c14bce9919ce7b5b80171e8b06de442d31.png" alt="Single Limit Switches" loading="lazy"><span class="plus">+</span></div>
+          <div class="product-card__line"></div>
+          <h3>Single Limit Switches</h3>
+          <p class="product-card__lead">Precision switching for dependable machine control.</p>
+          <p class="product-card__desc">Robust construction, corrosion-resistant materials and high protection ratings make our limit switches suitable for demanding industrial environments.</p>
+          <a href="#" class="btn btn--red btn--full">Explore Limit Switches</a>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-card__image"><img src="assets/images/e356bfbba0dde0aa2b9734de56dda72a2c5efc38.png" alt="Precision Limit Switches" loading="lazy"><span class="plus">+</span></div>
+          <div class="product-card__line"></div>
+          <h3>Precision Single & Multiple Limit Switches</h3>
+          <p class="product-card__lead">Engineered for accurate machine positioning.</p>
+          <p class="product-card__desc">Developed with decades of machine-tool expertise, these solutions provide reliable control and positioning for industrial machinery and equipment.</p>
+          <a href="#" class="btn btn--red btn--full">Explore Precision Limit Switches</a>
+        </article>
+        <article class="product-card reveal">
+          <div class="product-card__image"><img src="assets/images/bde1c8644f919d1c15d66e243faca200aef29906.png" alt="Photoelectric Sensors" loading="lazy"><span class="plus">+</span></div>
+          <div class="product-card__line"></div>
+          <h3>Photoelectric Sensors</h3>
+          <p class="product-card__lead">Detect with precision. Respond with confidence.</p>
+          <p class="product-card__desc">Our photoelectric sensors use light-based detection to support reliable object sensing and automation across a range of industrial applications.</p>
+          <a href="#" class="btn btn--red btn--full">Explore Photoelectric Sensors</a>
+        </article>
+        <article class="product-card reveal d1">
+          <div class="product-card__image"><img src="assets/images/3888b3bce74e0f78564f1b2a4c7654e3443acc5b.png" alt="NK Limit Switches" loading="lazy"><span class="plus">+</span></div>
+          <div class="product-card__line"></div>
+          <h3>NK Limit Switches</h3>
+          <p class="product-card__lead">Compact. Robust. Built for dependable switching.</p>
+          <p class="product-card__desc">Designed to meet demanding industrial requirements, NK Limit Switches offer flexible actuation, robust construction and options suited to safety-related applications.</p>
+          <a href="#" class="btn btn--red btn--full">Explore NK Switches</a>
+        </article>
+        <article class="product-card reveal d2">
+          <div class="product-card__image"><img src="assets/images/3454bf79110523b24bf919618cada395b41f861e.png" alt="Cable Connectors" loading="lazy"><span class="plus">+</span></div>
+          <div class="product-card__line"></div>
+          <h3>Cable Connectors</h3>
+          <p class="product-card__lead">Connectivity built for industrial environments.</p>
+          <p class="product-card__desc">Our sensor and actuator cables are designed for demanding applications, including energy-chain environments, with options suited to different installation requirements.</p>
+          <a href="#" class="btn btn--red btn--full">Explore Cable Connectors</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY TEKNIC (Figma Frame 1:402, 1440x718) ================= -->
+  <section class="why">
+    <div class="container">
+      <h2 class="section-title section-title--center section-title--dark">Why Teknic Euchner</h2> <!-- Centered dark title -->
+      <div class="why__grid"> <!-- Grid 3 columns, gap 20px -->
+        <div class="why__card reveal"><div class="why__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E60000"><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg></div><h4>Built Around What Industry Needs.</h4><p>Industrial environments leave little room for uncertainty. That's why our approach combines engineering expertise, robust materials and manufacturing experience to create products designed for dependable performance.</p></div>
+        <div class="why__card reveal d1"><div class="why__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E60000"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></div><h4>Engineering Expertise</h4><p>Built on decades of experience and strengthened by Euchner Germany's engineering heritage.</p></div>
+        <div class="why__card reveal d2"><div class="why__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E60000"><path d="M9 12l2 2 4-4"/><path d="M21 12A9 9 0 113 12a9 9 0 0118 0z"/></svg></div><h4>Reliable Performance</h4><p>Products designed to deliver consistent operation in demanding industrial environments.</p></div>
+        <div class="why__card reveal"><div class="why__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E60000"><path d="M14 9l6 6-6 6"/><path d="M8 9l-6 6 6 6"/></svg></div><h4>Robust Construction</h4><p>Quality materials, precision manufacturing and application-focused design for long-term performance.</p></div>
+        <div class="why__card reveal d1"><div class="why__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E60000"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2H10a2 2 0 00-2 2v2"/></svg></div><h4>Industry-Focused Solutions</h4><p>Products developed around the practical requirements of machines, automation systems and industrial equipment.</p></div>
+        <div class="why__card reveal d2"><div class="why__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#E60000"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h4>Quality as a Standard</h4><p>Our commitment to quality extends from product development and manufacturing to customer service.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MACHINES (Figma Frame 1:478, 1440x757, dark) ================= -->
+  <section class="machines">
+    <div class="container machines__inner">
+      <div class="machines__header"> <!-- Header grid: title left, desc right -->
+        <h2 class="section-title">Designed for Machines. Trusted Across Industries.</h2>
+        <div class="machines__desc"><div class="intro__line intro__line--light"></div><p>Our products support the machines and systems that keep modern manufacturing moving.</p></div>
+      </div>
+      <!-- List of 6 rows: each 01-06, title + description -->
+      <div class="machines__list">
+        <div class="machine-row reveal"><span class="machine-row__num">01</span><span class="machine-row__title">Machine Tools</span><span class="machine-row__desc">Precision sensing and positioning for machine-tool applications.</span></div>
+        <div class="machine-row reveal"><span class="machine-row__num">02</span><span class="machine-row__title">Industrial Automation</span><span class="machine-row__desc">Reliable detection and switching for automated processes.</span></div>
+        <div class="machine-row reveal"><span class="machine-row__num">03</span><span class="machine-row__title">Manufacturing Equipment</span><span class="machine-row__desc">Components designed for demanding production environments.</span></div>
+        <div class="machine-row reveal"><span class="machine-row__num">04</span><span class="machine-row__title">Material Handling</span><span class="machine-row__desc">Sensing and switching solutions for movement, positioning and control.</span></div>
+        <div class="machine-row reveal"><span class="machine-row__num">05</span><span class="machine-row__title">Safety Applications</span><span class="machine-row__desc">Products designed to support machine safety and reliable control.</span></div>
+        <div class="machine-row reveal"><span class="machine-row__num">06</span><span class="machine-row__title">Custom Industrial Applications</span><span class="machine-row__desc">Solutions selected around the specific requirements of your equipment.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= GERMAN (Figma Frame 1:510, 1440x890) ================= -->
+  <section class="german">
+    <div class="container german__grid"> <!-- 2 column grid as intro -->
+      <div class="german__left">
+        <div class="eyebrow"><span class="eyebrow__box"></span> INTRODUCTION</div>
+        <h2 class="section-title reveal">German Know-How. Indian Manufacturing. Industrial Confidence.</h2>
+        <a href="#" class="btn btn--red btn--small">Discover Our Legacy</a>
+      </div>
+      <div class="german__right">
+        <div class="intro__line"></div>
+        <p>Teknic Euchner brings together the engineering heritage of Euchner Germany with manufacturing and market expertise in India.</p>
+        <p>Established in 1989, the company has grown with the changing needs of Indian industry while remaining focused on quality, precision and dependable control solutions.</p>
+        <a href="#" class="link-arrow">Discover More <span>↗</span></a>
+      </div>
+    </div>
+    <!-- Collage of 6 factory/product images from Figma -->
+    <div class="container german__collage">
+      <img src="assets/images/ff21ce140248821ed61748595f9c020469feee1b.png" alt="" class="collage__img reveal">
+      <img src="assets/images/e7cebe8a3ed7f4c819c1084881058e282f56392f.png" alt="" class="collage__img reveal d1">
+      <img src="assets/images/d1d0a4da9f2157b922b0edfd7872a322c0c0e19a.png" alt="" class="collage__img reveal d2">
+      <img src="assets/images/950fba0552e7a77c1df60eea0ac6b2845072fb00.png" alt="" class="collage__img reveal d3">
+      <img src="assets/images/5b7fc3e54b57ddbec3e76b07fa6630b7a4e3d108.png" alt="" class="collage__img reveal d1">
+      <img src="assets/images/350b0030ce3b536bbe63201c96392ed330cce2f4.png" alt="" class="collage__img reveal">
+    </div>
+  </section>
+
+  <!-- ================= QUALITY (Figma Frame 1:528, 1440x707) ================= -->
+  <section class="quality">
+    <div class="container quality__grid"> <!-- Grid 627px + 585px -->
+      <div class="quality__left">
+        <h2 class="section-title reveal">Quality Isn't an Inspection.<br>It's a Commitment.</h2>
+        <a href="#" class="btn btn--red btn--small">Discover Quality</a>
+        <div class="quality__text"> <!-- Flex gap 20px: line + text block -->
+          <div class="intro__line"></div>
+          <div>
+            <p>For industrial components, quality is about more than meeting a specification.</p>
+            <p>At Teknic Euchner, quality is built into our approach to product development, manufacturing and customer service.</p>
+            <p>It's about consistent performance.<br>It's about dependable operation.<br>It's about building components that customers can specify with confidence.</p>
+          </div>
+        </div>
+        <a href="#" class="link-arrow">Discover More <span>↗</span></a>
+      </div>
+      <!-- Right image: factory workers, hash 696aeb... -->
+      <div class="quality__right reveal">
+        <img src="assets/images/696aeb716ec13ce4f65204f190cefdcd4d1bbe7c.png" alt="Quality manufacturing" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CTA FIND (Figma Frame 1:541, 1440x416, dark) ================= -->
+  <section class="cta-find">
+    <div class="container cta-find__inner">
+      <h2 class="section-title section-title--center">Let's Find the Right Solution for Your Application.</h2> <!-- Centered heading -->
+      <div class="cta-find__desc">
+        <div class="intro__line intro__line--center"></div>
+        <p>Whether you're designing a new machine, upgrading an existing system or looking for a reliable replacement, our team can help you identify the right control gear for your requirements.</p>
+      </div>
+      <div class="cta-find__btns"> <!-- Flex centered buttons -->
+        <a href="#products" class="btn btn--red">Explore Our Products</a>
+        <a href="#contact" class="btn btn--ghost-dark">GET IN TOUCH</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER TOP (Figma Frame 1:553) ================= -->
+  <section class="footer-top" id="dealers">
+    <div class="container footer-top__inner"> <!-- Grid 538px + 1fr -->
+      <div class="footer-top__left">
+        <h2 class="section-title section-title--small">Looking for Teknic Euchner Products?</h2>
+        <a href="#" class="btn btn--red btn--small">Find a Dealer</a>
+      </div>
+      <div class="footer-top__right">
+        <div class="intro__line"></div>
+        <p>Find an authorised dealer near you and get connected with the right product for your application.</p>
+        <a href="#" class="btn btn--dark">Find a Dealer <span>↗</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER (dark #151B20) ================= -->
+  <footer class="footer" id="contact">
+    <div class="container footer__grid"> <!-- Grid 349px 185px 233px 1fr -->
+      <div class="footer__brand"> <!-- Company branding column -->
+        <h3>Teknic Euchner</h3>
+        <p class="footer__tag">Sense. Switch. Control. Protect.</p> <!-- Tagline mono uppercase -->
+        <p class="footer__sub">Industrial control gear engineered for reliable performance.</p>
+      </div>
+      <div class="footer__col"> <!-- Quick links column -->
+        <div class="footer__label"><span class="footer__line"></span> QUICK LINKS</div> <!-- Label with 32px line -->
+        <nav class="footer__nav"> <!-- Nav for SEO -->
+          <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#products">PRODUCTS</a><a href="#dealers">DEALERS</a><a href="#">EVENTS</a><a href="#contact">CONTACT</a>
+        </nav>
+      </div>
+      <div class="footer__col"> <!-- Contact column -->
+        <div class="footer__label"><span class="footer__line"></span> CONTACT</div>
+        <div class="footer__contact">
+          <p>No.64, 5th Cross, Electronics City Bengaluru 560 100 Karnataka, India.</p>
+          <a href="tel:+918028522717">+91 80 28522717</a> <!-- tel: link enables click-to-call on mobile -->
+          <a href="mailto:marketing@teknic-euchner.co.in">marketing@teknic-euchner.co.in</a> <!-- mailto opens email client -->
+          <a href="https://www.teknic-euchner.co.in" target="_blank">www.teknic-euchner.co.in</a> <!-- target blank opens new tab -->
+        </div>
+      </div>
+      <div class="footer__col"> <!-- Social column -->
+        <div class="footer__label"><span class="footer__line"></span> FOLLOW US</div>
+        <div class="footer__social">
+          <!-- Each social button is 40x40 with border, hover turns red via CSS -->
+          <a href="#" aria-label="LinkedIn" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="#" aria-label="YouTube" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><path d="M9.75 15.02l5.75-3.02-5.75-3z" fill="#151B20"/></svg></a>
+          <a href="#" aria-label="Instagram" class="social-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom bar: legal + sense line -->
+    <div class="container footer__bottom">
+      <div class="footer__bottom-line"></div> <!-- 1px separator -->
+      <div class="footer__legal"> <!-- Flex space-between, mono 11px -->
+        <span>© 2026 Teknic Euchner</span>
+        <span>TERMS & CONDITIONS | PRIVACY POLICY</span>
+        <span>DESIGNED BY COJECTIVE</span>
+      </div>
+      <div class="footer__sense">Sense. Switch. Control. Protect.</div> <!-- Centered tagline -->
+    </div>
+  </footer>
+
+  <!-- JS file at end of body: ensures HTML parsed before JS runs, improves load performance -->
+  <script src="js/app.js"></script>
+</body>
+</html>

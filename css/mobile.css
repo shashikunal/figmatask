@@ -1,0 +1,97 @@
+/* ============================================================
+   MOBILE.CSS — MOBILE VERSION ONLY (max 720px)
+   Basic CSS for interview — overrides desktop.css on small screens
+   How to use: <link rel="stylesheet" href="css/mobile.css" media="screen and (max-width:720px)">
+   If you want to IGNORE responsive, simply DO NOT include this file
+   ============================================================ */
+
+/* This file only runs when screen width is 720px or less */
+@media screen and (max-width: 720px) {
+
+  /* Container becomes full width with small side gap */
+  .container { width: 95%; max-width: 100%; }
+
+  /* Header: full width, smaller top, hide nav */
+  .header {
+    width: 95%;
+    margin-left: -47.5%; /* half of 95% */
+    top: 12px;
+  }
+  .header__nav { display: none; } /* hide desktop nav */
+  .header__actions .icon-btn { display: none; }
+  .header__burger { display: block; } /* show hamburger */
+
+  /* Hero: AUDITED mobile — Figma 810->auto, content at 80,480 must stack vertically on mobile */
+  .hero { height: auto; padding: 100px 0 40px; min-height: 720px; }
+  .hero__content {
+    position: relative;
+    top: auto; left: auto; transform: none; /* FIX: reset desktop transform */
+    width: 95%;
+    display: block;
+    margin: 0 auto;
+    padding-top: 40px;
+  }
+  .hero__left { width: 100%; }
+  .hero__right { width: 100%; margin-top: 24px; }
+  .hero__title { font-size: 36px; line-height: 40px; width: 100%; height: auto; }
+  .hero__subtitle { width: 100%; }
+  .hero__ctas { flex-wrap: wrap; }
+  .hero__line { display: none; } /* hide 128px line on mobile per Figma mobile */
+
+  /* Intro: stack columns vertically */
+  .intro__grid { display: block; }
+  .intro__left { width: 100%; margin-bottom: 24px; }
+  .intro__right { width: 100%; }
+
+  /* Experience: stack heading and stats 1 column */
+  .experience__top { display: block; }
+  .experience__heading { width: 100%; margin-bottom: 16px; }
+  .stats { display: block; }
+  .stat { width: 100%; margin-bottom: 16px; }
+
+  /* Products: 1 per row instead of 3 */
+  .products__grid { display: block; }
+  .product-card { width: 100%; margin-bottom: 20px; }
+
+  /* Why: 1 per row */
+  .why__grid { display: block; }
+  .why__card { width: 100%; margin-bottom: 16px; }
+
+  /* Machines: stack rows, hide grid */
+  .machines__header { display: block; }
+  .machines__desc { width: 100%; margin-top: 12px; }
+  .machine-row { display: block; padding: 16px; }
+  .machine-row__num { display: inline-block; width: auto; margin-right: 12px; }
+  .machine-row__title { display: inline-block; width: auto; }
+  .machine-row__desc { display: block; margin-top: 8px; }
+
+  /* German collage: 1 image per row */
+  .german__grid { display: block; }
+  .german__left { width: 100%; margin-bottom: 16px; }
+  .german__right { width: 100%; }
+  .german__collage { display: block; }
+  .collage__img { width: 100%; height: 260px; margin-bottom: 16px; }
+
+  /* Quality: stack */
+  .quality__grid { display: block; }
+  .quality__left { width: 100%; }
+  .quality__right { width: 100%; margin-top: 20px; }
+  .quality__right img { height: 260px; }
+
+  /* CTA: stack buttons */
+  .cta-find__desc { display: block; text-align: center; }
+  .cta-find__btns .btn { display: block; width: 100%; margin: 8px 0; }
+
+  /* Footer top: stack */
+  .footer-top__inner { display: block; }
+  .footer-top__left { width: 100%; margin-bottom: 16px; }
+  .footer-top__right { width: 100%; display: block; }
+
+  /* Footer: stack 4 columns to 1 */
+  .footer__grid { display: block; }
+  .footer__brand { width: 100%; margin-bottom: 24px; }
+  .footer__col { width: 100%; margin-bottom: 24px; }
+  .footer__legal { display: block; text-align: center; }
+  .footer__legal span { display: block; margin: 6px 0; }
+
+}

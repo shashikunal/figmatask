@@ -1,0 +1,307 @@
+/* ============================================================
+   DESKTOP.CSS — DESKTOP VERSION ONLY (1440px)
+   Basic CSS for interview — no advanced tricks
+   Shows: selectors, box model, colors, fonts, flex
+   If you want to IGNORE responsive, use only this file
+   ============================================================ */
+
+/* Basic reset: removes browser default spacing */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Simple body style: font, background color, text color */
+body {
+  font-family: 'IBM Plex Sans', Arial, sans-serif; /* Figma body font */
+  background: #F6F6F6; /* light gray page background */
+  color: #0F0F0F; /* dark text */
+}
+
+/* Images should not overflow container */
+img { display: block; max-width: 100%; }
+
+/* Links inherit color, no underline */
+a { color: inherit; text-decoration: none; }
+
+/* Container: fixed 1280px centered, 80px side gap as Figma */
+.container {
+  width: 1280px; /* Figma max width */
+  max-width: 90%; /* basic responsive without calc */
+  margin: 0 auto; /* center horizontally */
+}
+
+/* ------- HEADER (Figma 1280x60) — FIX: was moving left due to margin-left -640, now uses transform centering ------- */
+.header {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%); /* FIX: basic centering that works on file:// and any width, replaces margin-left:-640 */
+  width: 1280px;
+  max-width: calc(100% - 32px); /* 16px gutters each side prevents left shift when viewport <1280 */
+  height: 60px;
+  background: #151B20;
+  border-radius: 6px;
+  z-index: 100;
+}
+.header__inner {
+  display: flex; /* basic flex row */
+  justify-content: space-between; /* logo left, nav center, actions right */
+  align-items: center;
+  height: 100%;
+  padding: 0 20px;
+}
+.header__logo img { height: 22px; }
+.header__nav { display: flex; gap: 28px; }
+.nav__link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: #CAD1D9; /* light gray */
+  text-transform: uppercase;
+}
+.nav__link:hover { color: #FFFFFF; }
+.header__actions { display: flex; gap: 16px; align-items: center; }
+.icon-btn {
+  width: 40px; height: 40px;
+  border: 1px solid #333;
+  background: transparent;
+  text-align: center;
+  line-height: 40px;
+  cursor: pointer;
+}
+.btn {
+  display: inline-block; /* basic button */
+  padding: 14px 22px;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.btn--red { background: #E60000; color: #FFFFFF; } /* Figma red */
+.btn--red:hover { background: #C00000; }
+.btn--ghost { background: transparent; color: #FFFFFF; border: 1px solid #FFFFFF; }
+.btn--ghost-dark { background: transparent; color: #0F0F0F; border: 1px solid #0F0F0F; }
+.btn--small { padding: 12px 20px; font-size: 13px; }
+.btn--large { padding: 16px 24px; }
+.btn--full { display: block; width: 100%; text-align: center; margin-top: 12px; }
+.btn__plus {
+  display: inline-block;
+  width: 22px; height: 22px;
+  border: 1px solid currentColor;
+  text-align: center;
+  line-height: 22px;
+  margin-left: 6px;
+}
+.header__burger { display: none; } /* hidden on desktop */
+
+/* ------- HERO (810px) — AUDITED FIGMA 1:153 ------- */
+/* Figma: Frame 9 1440x810 at (0,0), bg video at (-55,-31) 1550x872, content at (80,480) 587 + claim at (1064,480) 296 */
+.hero {
+  height: 810px;
+  background: #000000;
+  position: relative;
+  overflow: hidden;
+}
+.hero__media {
+  position: absolute;
+  top: -31px; left: -55px; /* Figma abs (-55,-31) */
+  width: 1550px; height: 872px; /* Figma 1550x872 */
+  object-fit: cover;
+}
+.hero__overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%); /* subtle overlay */
+}
+/* hero__content: centered 1280 (80 gutters) at y=480 — FIX left shift: use transform like header */
+.hero__content {
+  position: absolute;
+  top: 480px;
+  left: 50%;
+  transform: translateX(-50%); /* FIX: same centering as header, prevents left movement on file:// */
+  width: 1280px;
+  max-width: calc(100% - 32px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  z-index: 2;
+}
+.hero__left { width: 587px; } /* Figma Frame 8 587x264 at (80,480) */
+.hero__right { width: 296px; } /* Figma Frame 5 296x119 at (1064,480) */
+.hero__title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 50.81px; /* Figma exact 50.81px */
+  line-height: 58px; /* Figma 58px */
+  color: #FFFFFF;
+  font-weight: bold;
+  width: 587px; height: 94px; /* Figma size */
+}
+.hero__subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20.16px; /* Figma 20.16px */
+  line-height: 26px;
+  color: #FFFFFF;
+  width: 587px; /* Figma 587x40 at y=604 = 124px below title (480+94+30) */
+  margin-top: 30px; /* 30px gap title->subtitle as Figma (604-480-94=30) */
+}
+.hero__ctas { margin-top: 20px; display: flex; gap: 20px; } /* Frame 7 gap 20, at y=684 = 480+204 */
+.hero__ctas .btn { margin-right: 0; }
+.hero__line { width: 128px; height: 1px; background: #FFFFFF; } /* Line 1 128x0 at (1064,480) */
+.hero__claim { color: #FFFFFF; font-size: 16px; line-height: 24px; width: 296px; margin-top: 24px; } /* Text 296x95 at (1064,504) 24px below line */
+
+/* ------- SECTION HELPERS ------- */
+.eyebrow {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 14px;
+  color: #5C5C5C;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.eyebrow__box {
+  display: inline-block;
+  width: 16px; height: 16px;
+  border: 1px solid #5C5C5C;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 40px;
+  line-height: 44px;
+  font-weight: bold;
+  margin-top: 14px;
+}
+.section-title--light { color: #FFFFFF; }
+.section-title--center { text-align: center; }
+.section-title--small { font-size: 28px; }
+.link-arrow { font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-transform: uppercase; display: inline-block; margin-top: 16px; }
+
+/* ------- INTRO ------- */
+.intro { background: #FFFFFF; padding: 92px 0 88px; }
+.intro__grid { display: flex; gap: 64px; } /* basic flex instead of grid */
+.intro__left { width: 567px; }
+.intro__right { flex: 1; }
+.intro__line { width: 128px; height: 1px; background: #5C5C5C; margin-bottom: 24px; }
+.intro__text p { font-size: 16px; line-height: 26px; color: #5C5C5C; margin-bottom: 16px; }
+.intro__text p:first-child { color: #0F0F0F; font-weight: bold; }
+
+/* ------- EXPERIENCE (dark) ------- */
+.experience { background: #0F0F0F; padding: 72px 0 64px; color: #FFFFFF; }
+.experience__top { display: flex; gap: 64px; margin-bottom: 48px; }
+.experience__heading { width: 483px; }
+.experience__note { flex: 1; display: flex; gap: 20px; }
+.experience__note p { color: #CAD1D9; font-size: 14px; }
+.stats { display: flex; gap: 24px; } /* flex row 4 cards */
+.stat {
+  flex: 1; /* equal width */
+  background: #121517;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 28px 24px;
+  min-height: 252px;
+}
+.stat__icon { width: 60px; height: 60px; background: #222; text-align: center; line-height: 60px; border-radius: 10px; }
+.stat h3 { font-size: 20px; margin: 16px 0 8px; color: #FFFFFF; }
+.stat p { font-size: 14px; color: #CAD1D9; }
+
+/* ------- PRODUCTS ------- */
+.products { background: #F6F6F6; padding: 84px 0 80px; }
+.products__header { text-align: center; max-width: 780px; margin: 0 auto 48px; }
+.products__desc { display: flex; gap: 16px; justify-content: center; margin-top: 18px; }
+.products__desc p { font-size: 15px; color: #5C5C5C; max-width: 628px; }
+.products__grid { display: flex; flex-wrap: wrap; gap: 24px; } /* basic flex wrap */
+.product-card {
+  width: 31%; /* 3 per row: (100% - gaps)/3 */
+  background: #FFFFFF;
+  border: 1px solid #EDEDED;
+  border-radius: 12px;
+  padding: 18px;
+}
+.product-card__image { height: 300px; overflow: hidden; border-radius: 8px; background: #F9F9F9; position: relative; }
+.product-card__image img { width: 100%; height: 100%; object-fit: cover; }
+.product-card__image .plus { position: absolute; top: 12px; right: 12px; background: #FFFFFF; width: 28px; height: 28px; text-align: center; line-height: 28px; border-radius: 6px; }
+.product-card__line { height: 1px; background: #0F0F0F; margin: 18px 0 16px; }
+.product-card h3 { font-size: 18px; font-weight: bold; min-height: 44px; }
+.product-card__lead { font-size: 14px; font-weight: bold; margin-top: 10px; }
+.product-card__desc { font-size: 13px; color: #5C5C5C; margin-top: 8px; min-height: 60px; }
+
+/* ------- WHY ------- */
+.why { background: #F6F6F6; padding: 72px 0; border-top: 1px solid #ECECEC; }
+.why__grid { display: flex; flex-wrap: wrap; gap: 20px; margin-top: 42px; }
+.why__card {
+  width: 31%;
+  background: #FFFFFF;
+  border: 1px solid #EAEAEA;
+  border-radius: 12px;
+  padding: 28px 24px;
+  min-height: 167px;
+}
+.why__icon { width: 40px; height: 40px; background: #FFF0F0; text-align: center; line-height: 40px; border-radius: 8px; }
+.why__card h4 { font-family: 'IBM Plex Mono', monospace; font-size: 14px; text-transform: uppercase; margin: 12px 0 8px; }
+.why__card p { font-size: 14px; color: #5C5C5C; }
+
+/* ------- MACHINES (dark) ------- */
+.machines { background: #0F0F0F; padding: 74px 0 64px; color: #FFFFFF; }
+.machines__header { display: flex; gap: 40px; margin-bottom: 44px; }
+.machines__header h2 { flex: 1; }
+.machines__desc { width: 586px; display: flex; gap: 16px; }
+.machines__desc p { color: #CAD1D9; }
+.machines__list { border-top: 1px solid #333; }
+.machine-row { display: flex; gap: 24px; padding: 18px 16px; border-bottom: 1px solid #333; align-items: center; }
+.machine-row:hover { background: #1a1a1a; }
+.machine-row__num { width: 72px; font-family: 'IBM Plex Mono', monospace; color: #CAD1D9; }
+.machine-row__title { width: 300px; font-weight: bold; color: #FFFFFF; }
+.machine-row__desc { flex: 1; color: #CAD1D9; font-size: 14px; }
+
+/* ------- GERMAN ------- */
+.german { background: #FFFFFF; padding: 78px 0 40px; }
+.german__grid { display: flex; gap: 64px; }
+.german__left { width: 567px; }
+.german__right { flex: 1; }
+.german__right p { color: #5C5C5C; margin-bottom: 14px; }
+.german__collage { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 48px; }
+.collage__img { width: 32%; height: 300px; object-fit: cover; border-radius: 10px; border: 1px solid #EDEDED; }
+
+/* ------- QUALITY ------- */
+.quality { background: #F6F6F6; padding: 72px 0; }
+.quality__grid { display: flex; gap: 68px; }
+.quality__left { width: 627px; }
+.quality__right { width: 585px; }
+.quality__text { display: flex; gap: 20px; margin-top: 28px; }
+.quality__text p { color: #5C5C5C; margin-bottom: 10px; }
+.quality__right img { width: 100%; height: 560px; object-fit: cover; border-radius: 12px; }
+
+/* ------- CTA FIND (dark) ------- */
+.cta-find { background: #0F0F0F; padding: 72px 0 64px; text-align: center; color: #FFFFFF; }
+.cta-find__desc { display: flex; gap: 16px; justify-content: center; max-width: 736px; margin: 18px auto 0; text-align: left; }
+.cta-find__desc p { color: #CAD1D9; }
+.cta-find__btns { margin-top: 28px; }
+.cta-find__btns .btn { margin: 0 8px; }
+
+/* ------- FOOTER TOP ------- */
+.footer-top { background: #FFFFFF; padding: 48px 0; border-top: 1px solid #ECECEC; border-bottom: 1px solid #ECECEC; }
+.footer-top__inner { display: flex; gap: 40px; }
+.footer-top__left { width: 538px; }
+.footer-top__right { flex: 1; display: flex; gap: 16px; }
+.footer-top__right p { color: #5C5C5C; }
+
+/* ------- FOOTER ------- */
+.footer { background: #151B20; color: #FFFFFF; padding: 48px 0 24px; }
+.footer__grid { display: flex; gap: 32px; padding-bottom: 32px; }
+.footer__brand { width: 349px; }
+.footer__brand h3 { font-size: 28px; font-weight: bold; }
+.footer__tag { font-family: 'IBM Plex Mono', monospace; font-size: 13px; text-transform: uppercase; margin-top: 8px; }
+.footer__sub { font-size: 14px; color: #CAD1D9; margin-top: 8px; }
+.footer__col { flex: 1; }
+.footer__label { font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #CAD1D9; margin-bottom: 18px; }
+.footer__line { display: inline-block; width: 32px; height: 1px; background: #CAD1D9; margin-right: 8px; vertical-align: middle; }
+.footer__nav a { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #CAD1D9; margin-bottom: 10px; }
+.footer__nav a:hover { color: #FFFFFF; }
+.footer__contact p, .footer__contact a { font-size: 13px; color: #CAD1D9; display: block; margin-bottom: 10px; }
+.footer__social { display: flex; gap: 12px; }
+.social-btn { width: 40px; height: 40px; border: 1px solid #333; text-align: center; line-height: 40px; border-radius: 8px; display: inline-block; }
+.social-btn:hover { background: #E60000; border-color: #E60000; }
+.footer__bottom { border-top: 1px solid #333; padding-top: 20px; }
+.footer__legal { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #CAD1D9; }
+.footer__sense { text-align: center; font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 2px; text-transform: uppercase; color: #777; margin-top: 12px; }
+
+/* ------- SIMPLE REVEAL (basic) ------- */
+.reveal { opacity: 1; } /* basic: no animation, just visible - simpler than transform */
